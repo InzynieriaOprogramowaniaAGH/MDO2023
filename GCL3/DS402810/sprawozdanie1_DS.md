@@ -74,3 +74,7 @@ W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości comm
 ![](./screeny1/hook2.png)
 ![](./screeny1/hook2_log.png)
 
+### 1. Rozpocznij przygotowanie środowiska Dockerowego
+![](./screeny1/docker.png)
+![](./screeny1/docker_ubuntu.png)
+![](./screeny1/docker_dziala.png)
