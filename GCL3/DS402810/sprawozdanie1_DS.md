@@ -70,3 +70,7 @@ Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę
 ![](./screeny1/hook_body.png)
 ![](./screeny1/hook_dziala.png)
 
+W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
+![](./screeny1/hook2.png)
+![](./screeny1/hook2_log.png)
+
