@@ -68,4 +68,5 @@ Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
 Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
 ![](./screeny1/hook.png)
 ![](./screeny1/hook_body.png)
+![](./screeny1/hook_dziala.png)
 
