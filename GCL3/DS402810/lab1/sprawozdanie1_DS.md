@@ -1,5 +1,5 @@
 # Sprawozdanie 1 - Wprowadzenie, Git, Gałęzie, SSH
-### Dawid Skóra, data oddania: 5.12.2022
+### Dawid Skóra, data oddania: 22.12.2022
 
 ---
 
