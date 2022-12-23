@@ -12,15 +12,15 @@
 ## Zadania do wykonania
 ### Weryfikacja sprawności środowiska UNIX
 1. Wykaż możliwość komunikacji ze środowiskiem linuksowym (powłoka oraz przesyłanie plików)
-1. Zainstaluj klienta Git i obsługę kluczy SSH
-2. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2023 za pomocą HTTPS
-3. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
+2. Zainstaluj klienta Git i obsługę kluczy SSH
+3. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2023 za pomocą HTTPS
+4. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
    - Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem
    - Skonfiguruj klucz SSH jako metodę dostępu
    - Sklonuj repozytorium z wykorzystaniem protokołu SSH
-4. Przełącz się na gałąź swojej grupy
-5. Utwórz gałąź o nazwie "inicjały & nr indeksu" np. ```KD232144```
-6. Rozpocznij pracę na nowej gałęzi
+5. Przełącz się na gałąź swojej grupy
+6. Utwórz gałąź o nazwie "inicjały & nr indeksu" np. ```KD232144```
+7. Rozpocznij pracę na nowej gałęzi
    - W katalogu właściwym dla grupy utwórz nowy katalog, także o nazwie "inicjały & nr indeksu" np. ```KD232144```
    - W nowym katalogu dodaj plik ze sprawozdaniem
    - Dodaj zrzuty ekranu
