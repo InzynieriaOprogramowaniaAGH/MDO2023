@@ -23,6 +23,8 @@ CZĘŚĆ 2: Tworzenie pipeline
 
 Opis projektu: Otóż program to zapożyczony kod z innych zajęć, jest to zbiór funkcji pozwalających obliczyć metodą CPM koszt wykonania prac, zasadniczo po odpaleniu wyrzuca wynik, wyrzuca obrazek z grafem i kończy swoje działanie.
 
+Link do projektu: https://github.com/michonszy/Logistyka_CPM
+
 Sam build polega na sprawdzeniu poprawności uruchomienia kodu, jeżeli nie wypluwa nic to jest dobrze, jak wypluwa błąd to jest niedobrze, nie będzie więc on działał ciągle w tle np. nasłuchując zapytania po API, wykonuje swoją pracę i kończy działanie
 
 Nieco bardziej rozbudowane są testy, tam do podstawowej funkcji przekazywane są testowe dane i pokazują się wyniki, czy testy przeszły itd., generowany jest też plik png
@@ -34,20 +36,28 @@ Pipeline został przedstawiony za pomocą diagramu UML:
  ![image description](images/lab3_UML.png)
 
 
+Skrypt do pipeline jakiego użyłem (tutaj wyszczególniony osobny krok clone którego nie ma na diagramie, spowodowane to było tym że jak się okazuje podanie powyżej linka do GitHuba Jenkinsowi nie wystarcza więc dodałem pobranie repo w samym pipeline, a jednak nie jest to częśc kroku build):
+
+![image description](images/lab3_zdj6.png)
+
 Udany proces budowy:
 
+![image description](images/lab3_zdj7.png)
+
+Jak widać nie wszystkie poprzednie wykonania były prawidłowe, spowodowane to było moimi przeoczeniami i np literówkami
 
 Następnie Jenkinsfile wrzuciłem do swojego repo i mogłem nieco zmodyfikować pipeline aby korzystał z tego pliku:
 
+![image description](images/lab3_zdj8.png)
 
+Wykonanie poprzez Jenkinsfile w repo na githubie:
 
-Napotkane błędy:
+![image description](images/lab3_zdj9.png)
 
-Przy użyciu dockera wyskakiwał błąd error during connect Post docker, naprawą okazało się otwarcie portu 5000 i zmapowanie volume /var/run/docker.sock aby jenkins korzystał z dockera hosta
 
 
 Końcowe wnioski:
 
-Zastosowałem instalacje Jenkinsa w Dockerze, okazało się to błędem, definiując zadanie jeszcze raz zastosował bym instalację bezpośrednio na serwerze CI, również w internecie znalazłem informację że takie podejście było bardzo popularne jednak szybko zostało uznane za anty wzorzec wdrażania jenkinsa z powodu wielu problemów z jenkinsem zainstalownym w ten sposób co doświadczyłem osobiście (żródło: https://szkoladockera.pl/)
+Zastosowałem instalacje Jenkinsa w Dockerze, okazało się to błędem, każde błedne postawienie obrazu powodowało że znowu musiałem czekać na instalacje np wszelkich wtyczek w jenkinsie, oczywiście mógłbym tak samo zmiany dokonać wewnątrz kontenera lecz nie wszystko było możliwo (np dodanie volume, przynajmniej na moim poziomie wiedzy), również zasadniczo modyfikowanie postawionego kontenera nieco psuje moim zdaniem istote kontenera, wykonując zadanie jeszcze raz zastosował bym instalację bezpośrednio na serwerze CI, również w internecie znalazłem informację że takie podejście było bardzo popularne jednak szybko zostało uznane za anty wzorzec wdrażania jenkinsa z powodu wielu problemów z jenkinsem zainstalownym w ten sposób co doświadczyłem osobiście (żródło: https://szkoladockera.pl/)
 
 
