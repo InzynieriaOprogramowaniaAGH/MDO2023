@@ -1,0 +1,6 @@
+FROM builder as artifact
+
+COPY --from=bld sqlite3 .
+
+
+
