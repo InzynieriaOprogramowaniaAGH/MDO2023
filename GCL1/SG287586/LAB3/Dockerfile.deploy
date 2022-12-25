@@ -1,6 +1,6 @@
 FROM ubuntu
 
-ADD /var/jenkins_home/workspace/sqlitePipeline /app 
+COPY /var/jenkins_home/workspace/sqlitePipeline/sqlite3 /app 
 CMD /app/sqlite3
 
 
