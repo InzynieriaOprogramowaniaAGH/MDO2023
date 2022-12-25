@@ -1,6 +1,0 @@
-FROM ubuntu
-
-COPY /var/jenkins_home/workspace/sqlitePipeline/sqlite3 /app 
-CMD /app/sqlite3
-
-
