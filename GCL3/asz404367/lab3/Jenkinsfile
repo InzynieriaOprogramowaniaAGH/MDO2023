@@ -12,11 +12,11 @@ pipeline {
 
         stage('Init stage') {
             steps {
-               dir("GCL3/asz404367/lab3/sample_project/builder"){
+               dir("GCL3/asz404367/lab3/sample_project"){
                     sh "echo 'Building base image with Java8 and git'"
                     sh "docker build -t lab3_base ./base"
                     sh "echo 'Building builder image'"
-                    sh "docker build -t builder_img ."
+                    sh "docker build -t builder_img ./builder"
                     sh "echo 'Starting builder container'"
                     sh "docker run --rm -d --name builder builder_img"
                }
