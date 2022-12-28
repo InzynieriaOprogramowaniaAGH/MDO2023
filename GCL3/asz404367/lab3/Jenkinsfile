@@ -51,7 +51,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub_token', variable: 'docker_hub_token')]) {
                 sh '''
-                    docker cp builder:target/spring-boot-rest-controller-unit-test-0.0.1-SNAPSHOT.jar app.jar
+                    docker cp builder:/spring-boot-unit-test-rest-controller/target/spring-boot-rest-controller-unit-test-0.0.1-SNAPSHOT.jar app.jar
                     docker build -t sample_project_app .
                     docker login -u szafa9999 -p ${docker_hub_token}
                     docker push sample_project_app
@@ -65,8 +65,8 @@ pipeline {
 //###############################
     post{
         always{
-            sh 'docker stop builder'
-            sh 'docker image rm builder_img'
+            // sh 'docker stop builder'
+            // sh 'docker image rm builder_img'
         }
     }
 }
