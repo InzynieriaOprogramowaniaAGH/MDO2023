@@ -22,10 +22,10 @@ pipeline {
         stage('Build stage') {
             steps {
                 sh '''
-                    docker exec -t ./mvnw compile
+                    docker exec -t ./mvnw test
                     rc=$?
                     if [ $rc -ne 0 ] ; then
-                    echo Compile failed, exit code [$rc]; exit $rc
+                    echo Tests failed, exit code [$rc]; exit $rc
                     fi
                 '''
             }
