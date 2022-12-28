@@ -61,10 +61,10 @@ pipeline {
 
     }
 //###############################
-    // post{
-    //     always{
-    //         sh 'docker stop builder'
-    //         sh 'docker image rm builder_img'
-    //     }
-    // }
+    post{
+        always{
+            sh 'docker stop builder'
+            sh 'docker image rm builder_img'
+        }
+    }
 }
