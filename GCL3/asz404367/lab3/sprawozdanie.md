@@ -93,7 +93,13 @@ Dalej podaje, aby odpowiewdnie zmienił ścieżkę oraz zbudował znajdujący si
 ![](img/20221228170601.png)  
 
 
-## **Sprin boot pipeline**
+## **Spring boot pipeline**
 
 Konfiguracja pipeline, wskazująca repozytorium, branch oraz plik, w którym opisano pipeline-stages
-![](img/20221228171954.png)  
+
+![](img/20221228212311.png)  
+
+Konfiguracja ta wskazuje poprostu repozytorium,branch oraz ścieżkę do Jenkinsfile, w którym opisano kroki pipeline. 
+
+Pipeline napisano metodą deklaratywną, znajduje się ona pod ścieżką GCL3/asz404367/lab3/Jenkinsfile
+
