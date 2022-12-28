@@ -17,24 +17,12 @@ pipeline {
                     sh "docker run --rm --name builder lab3_base"
                }
             }
-        
+        }
 
         stage('Build stage') {
             steps {
                 sh '''
-                    docker exec -t ./mvnw test
-                    rc=$?
-                    if [ $rc -ne 0 ] ; then
-                    echo Tests failed, exit code [$rc]; exit $rc
-                    fi
-                '''
-            }
-        }
-
-        stage('Test stage') {
-            steps {
-                sh '''
-                    docker exec -t ./mvnw test
+                    docker exec -t builder ./mvnw compile
                     rc=$?
                     if [ $rc -ne 0 ] ; then
                     echo Compile failed, exit code [$rc]; exit $rc
@@ -43,7 +31,16 @@ pipeline {
             }
         }
 
-
-
+        stage('Test stage') {
+            steps {
+                sh '''
+                    docker exec -t builder ./mvnw test
+                    rc=$?
+                    if [ $rc -ne 0 ] ; then
+                    echo Tests failed, exit code [$rc]; exit $rc
+                    fi
+                '''
+            }
+        }
     }
 }
