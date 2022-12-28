@@ -103,3 +103,6 @@ Konfiguracja ta wskazuje poprostu repozytorium,branch oraz ścieżkę do Jenkins
 
 Pipeline napisano metodą deklaratywną, znajduje się ona pod ścieżką GCL3/asz404367/lab3/Jenkinsfile
 
+Utworzono access token dla pipeline
+
+![](img/20221228233518.png)  

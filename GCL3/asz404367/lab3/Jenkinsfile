@@ -12,7 +12,7 @@ pipeline {
 
         stage('Init stage') {
             steps {
-               dir("GCL3/asz404367/lab3/sample_project"){
+               dir("GCL3/asz404367/lab3/sample_project/builder"){
                     sh "echo 'Building base image with Java8 and git'"
                     sh "docker build -t lab3_base ./base"
                     sh "echo 'Building builder image'"
@@ -47,12 +47,24 @@ pipeline {
             }
         }
 
-        stage('Clean up stage') {
+        stage('Deploy stage') {
             steps {
-                sh 'docker stop builder'
-                sh 'docker image rm builder_img'
+                sh '''
+                    docker cp builder:target/spring-boot-rest-controller-unit-test-0.0.1-SNAPSHOT.jar app.jar
+                    docker build -t sample_project_app .
+                    docker login -u szafa9999 -p ${docker_hub_token}
+                    docker push sample_project_app
+                '''
             }
         }
 
+
     }
+//###############################
+    // post{
+    //     always{
+    //         sh 'docker stop builder'
+    //         sh 'docker image rm builder_img'
+    //     }
+    // }
 }
