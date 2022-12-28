@@ -14,7 +14,7 @@ pipeline {
             steps {
                dir("GCL3/asz404367/lab3/sample_project"){
                     sh "docker build -t lab3_base ."
-                    sh "docker run --rm --name builder lab3_base"
+                    sh "docker run --rm -d --name builder lab3_base"
                }
             }
         }
@@ -42,5 +42,13 @@ pipeline {
                 '''
             }
         }
+
+        stage('Clean up stage') {
+            steps {
+                sh 'docker stop builder'
+                sh 'docker image rm lab3_base'
+            }
+        }
+
     }
 }
