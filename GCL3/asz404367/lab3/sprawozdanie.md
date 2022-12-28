@@ -91,3 +91,9 @@ Dalej podaje, aby odpowiewdnie zmienił ścieżkę oraz zbudował znajdujący si
 ### **Wynik projektu, który buduje obraz dockerowy**
 
 ![](img/20221228170601.png)  
+
+
+## **Sprin boot pipeline**
+
+Konfiguracja pipeline, wskazująca repozytorium, branch oraz plik, w którym opisano pipeline-stages
+![](img/20221228171954.png)  

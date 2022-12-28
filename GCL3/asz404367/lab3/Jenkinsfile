@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    stages {
+        
+        stage('checkout remote repo'){
+            steps{
+            git( branch: 'asz404367',
+                 url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git')
+            }
+        }
+
+        stage('Init stage') {
+            steps {
+               dir("GCL3/asz404367/lab3/sample_project"){
+                    sh "docker build -t lab3_base ."
+                    sh "docker run --rm --name builder lab3_base"
+               }
+            }
+        
+
+        stage('Build stage') {
+            steps {
+                sh '''
+                    docker exec -t ./mvnw compile
+                    rc=$?
+                    if [ $rc -ne 0 ] ; then
+                    echo Compile failed, exit code [$rc]; exit $rc
+                    fi
+                '''
+            }
+        }
+
+        stage('Test stage') {
+            steps {
+                sh '''
+                    docker exec -t ./mvnw test
+                    rc=$?
+                    if [ $rc -ne 0 ] ; then
+                    echo Compile failed, exit code [$rc]; exit $rc
+                    fi
+                '''
+            }
+        }
+
+
+
+    }
+}
