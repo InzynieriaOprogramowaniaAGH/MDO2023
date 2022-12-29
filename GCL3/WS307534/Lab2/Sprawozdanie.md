@@ -169,6 +169,14 @@ Serwisy są uruchamiane równolegle, dlatego musimy użyć atrybutu **depends_on
 ![](.\screeny\kompozycja_uruchomienie.png)
 
 2. Wdróż :)
+Jako wdrożenie utworzymy pakiet DEB, umożliwiający instalację aplikacji dla dystrybucji bazujących na debianie.
+W tym celu tworzymy osobny **Dockerfile** wyglądający w ten sposób:
+![](.\screeny\publish_dockerfile.png)
+Bazujemy tutaj na obrazie utworzonym z testów, ponieważ nie chcemy mieć możliwości zbudowania tego kontenera, gdy nie będzie możliwości utworzenia obrazu kontenera testowego
+
+![](.\screeny\efekt_publisha.png)
+Jak widać pakiet DEB został poprawnie utworzony
+Następnym krokiem byłoby przekopiowanie pakietu DEB do hosta i uruchomienie w osobnym kontenerze, tak aby przetestwować instalację
 
 ### Przygotowanie do wdrożenia (deploy): dyskusje
 ---
@@ -189,7 +197,7 @@ Program nadaje się do publikowania jako kontener, lecz nie miało by to za duż
     - W jaki sposób zapewnić taki format? Dodatkowy krok (trzeci kontener)? Jakiś przykład?
     Taki format (np. DEB) można zapewnić poprzez zbudowanie pakietu zgodnie z tą instrukcją: https://www.internalpointers.com/post/build-binary-deb-package-practical-guide. Budowanie pakietu DEB najlepiej wykonać w osobnym kontenerze po wykonaniu builda i testów, ponieważ na pakiecie DEB nie wykonamy już unit testów.
     Osobny kontener najpierw zweryfikowałby czy unit testy przeszły, następnie bazując na obrazie z **build'a**:
-    1. Doinstalował potrzebne programy do utworzenia pakietu DEB m.in. dpkg-deb
+    1. Doinstalował potrzebne programy do utworzenia pakietu DEB
     2. Utworzył docelową strukturę pakietu oraz przekopiował potrzebne pliki programu w odpowiednie miejsca
     3. Utworzył i wypełnił plik "control"
     4. Zbudował pakiet DEB
