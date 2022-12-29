@@ -26,7 +26,7 @@ pipeline {
         stage('Build stage') {
             steps {
                 sh '''
-                    docker exec -t builder ./mvnw compile
+                    docker exec -t builder ./mvnw clean install
                     rc=$?
                     if [ $rc -ne 0 ] ; then
                     echo Compile failed, exit code [$rc]; exit $rc
@@ -50,12 +50,14 @@ pipeline {
         stage('Deploy stage') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub_token', variable: 'docker_hub_token')]) {
-                sh '''
-                    docker cp builder:/spring-boot-unit-test-rest-controller/target/spring-boot-rest-controller-unit-test-0.0.1-SNAPSHOT.jar app.jar
-                    docker build -t sample_project_app .
-                    docker login -u szafa9999 -p ${docker_hub_token}
-                    docker push sample_project_app
-                '''
+                 dir("GCL3/asz404367/lab3/sample_project"){
+                    sh '''
+                        docker cp builder:/spring-boot-unit-test-rest-controller/target/spring-boot-rest-controller-unit-test-0.0.1-SNAPSHOT.jar app.jar
+                        docker build -t szafa9999/lab3:sample_project_app .
+                        docker login -u szafa9999 -p ${docker_hub_token}
+                        docker push szafa9999/lab3:sample_project_app
+                    '''
+                 }
             }
             }
         }
@@ -65,8 +67,8 @@ pipeline {
 //###############################
     post{
         always{
-            // sh 'docker stop builder'
-            // sh 'docker image rm builder_img'
+            sh 'docker stop builder'
+            sh 'docker image rm builder_img'
         }
     }
 }

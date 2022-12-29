@@ -106,3 +106,18 @@ Pipeline napisano metodą deklaratywną, znajduje się ona pod ścieżką GCL3/a
 Utworzono access token dla pipeline
 
 ![](img/20221228233518.png)  
+
+Oraz repozytorium, do którego będzie wykonywany deployment
+
+
+Diagram UML przedstawiający pipeline-workflow
+
+![](img/20221229010134.png)  
+
+Widok w konsoli Jenkinsa
+
+![](img/20221229010206.png)  
+
+Deployment można znaleźć w utworzonym repozytorium na dockerHub
+
+![](img/20221229010348.png)  
