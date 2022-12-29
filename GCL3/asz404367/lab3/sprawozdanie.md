@@ -35,7 +35,7 @@ Następnie uruchomiono pipeline, co dało następujący efekt
 
 ![alt text](./img/uname_jenkins.png)
 
-## 2. **Projekt, który zwraca błąd, gdy... godzina jest nieparzysta**
+## 2. **Projekt, który zwraca błąd, gdy godzina jest nieparzysta**
 
 Utworzono freestyle project i w build steps dodano skyrpt, który zostanie przerwany jeśli aktulana godzinajest parzysta
 
@@ -46,23 +46,16 @@ Przykładowe działanie
 ![](img/20221227174729.png)  
 
 # **"Prawdziwy" projekt:**
-    Projekt ma sklonować repozytorium, przejść na osobistą gałąź i zbudować jeden z Dockerfilow
+    Projekt ma sklonować repozytorium, przejść na osobistą gałąź i zbudować jeden z Dockerfilów
 
 Konfiguracja projektu:
 W source code management podaje repozytorium, które jenknins ma dla mnie skonfigurować oraz mój branch
 
 ![](img/20221228101238.png)  
-<!-- ![](img/20221227183106.png)   -->
-
-
-<!-- Dalej podaje,aby po zrobieniu pulla zmienił branch na "asz404367" i przeszedł do odpowiedniej ścieżki
-
-![](img/20221227183038.png)   -->
 
 Dalej podaje, aby odpowiewdnie zmienił ścieżkę oraz zbudował znajdujący się tam Dockerfile
 
 ![](img/20221228101312.png)  
-<!-- ![](img/20221227183402.png)   -->
 
 
 ### **Problemy, które pojawiły się podczas próby użycia docker deamona w pipeline:**
@@ -93,26 +86,21 @@ Dalej podaje, aby odpowiewdnie zmienił ścieżkę oraz zbudował znajdujący si
 ![](img/20221228170601.png)  
 
 
-## **Spring boot pipeline**
+# **Spring boot pipeline**
 
-Konfiguracja pipeline, wskazująca repozytorium, branch oraz plik, w którym opisano pipeline-stages
+Konfiguracja pipeline, wskazująca repozytorium, branch oraz plik *Jenkinsfile*, w którym opisano pipeline-stages
 
 ![](img/20221228212311.png)  
 
-Konfiguracja ta wskazuje poprostu repozytorium,branch oraz ścieżkę do Jenkinsfile, w którym opisano kroki pipeline. 
+Pipeline napisano metodą deklaratywną. Jenkinsfile znajduje się ona pod ścieżką GCL3/asz404367/lab3/Jenkinsfile
 
-Pipeline napisano metodą deklaratywną, znajduje się ona pod ścieżką GCL3/asz404367/lab3/Jenkinsfile
-
-Utworzono access token dla pipeline
+Utworzono repozytorium na dockerhub, do którego będzie wykonywany deployment oraz utworzono access token dla pipeline, który jest wykorzystywany przy deploymencie, do zalogowanie się na utworzone konto na dockerHub
 
 ![](img/20221228233518.png)  
 
-Który jets wykorzystywany przy deploymencie, do zalogowanie się na utworzone konto na dockerHub
 
 ![](img/20221229010813.png)  
 
-
-Utworzono repozytorium, do którego będzie wykonywany deployment
 
 Diagram UML przedstawiający pipeline-workflow
 
