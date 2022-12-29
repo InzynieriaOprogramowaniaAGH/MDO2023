@@ -174,14 +174,23 @@ Serwisy są uruchamiane równolegle, dlatego musimy użyć atrybutu **depends_on
 ---
 - czy program nadaje się do wdrażania i publikowania jako kontener, czy taki sposób interakcji nadaje się tylko do builda
 
-Program nadaje się do publikowania jako kontener, lecz nie miało by to za dużego sensu, ponieważ jest to zwykła aplikacja działająca w tle i poprawiająca źle wpisane komendy w terminalu, konteneryzacja tej aplikacji nie miałaby prawie żadnej wartości dodanej
+Program nadaje się do publikowania jako kontener, lecz nie miało by to za dużego sensu, ponieważ jest to zwykła aplikacja, którą uruchamiamy na hoście w przypadku źle wpisanej komendy w terminalu, konteneryzacja tej aplikacji nie miałaby żadnej wartości dodanej, ponieważ z tej funkcjonalności potencjalny użytkownik zapewne będzie chciał korzystać na swojej głównej maszynie, a nie w kontenerze
 
 - opisz w jaki sposób miałoby zachodzić przygotowanie finalnego artefaktu
     - jeżeli program miałby być publikowany jako kontener - czy trzeba go oczyszczać z pozostałości po buildzie?
     Nie trzeba ponieważ tak naprawdę w przypadku tej aplikacji nie mamy do czynienia z prawdziwym buildem, po prostu pobieramy zależności i konfigurujemy środowisko
 
     - A może dedykowany deploy-and-publish byłby oddzielną ścieżką (inne Dockerfiles)?
+    Deploy-and-publish w tym przypadku to byłoby utworzenie pakietu DEB za pomocą osobnego **Dockerfile** lub osobnego serwisu w kompozycji, który został by wykonany po pozytywnym rezultacie unit testów
 
     - Czy zbudowany program należałoby dystrybuować jako pakiet, np. JAR, DEB, RPM, EGG?
+    Biorąc pod uwagę do czego służy wybrany przeze mnie program, najlepiej dystrybuować go jako pakiet pod dystrybucje Linuksowe, więc DEB i RPM wchodzą tutaj w gre
 
     - W jaki sposób zapewnić taki format? Dodatkowy krok (trzeci kontener)? Jakiś przykład?
+    Taki format (np. DEB) można zapewnić poprzez zbudowanie pakietu zgodnie z tą instrukcją: https://www.internalpointers.com/post/build-binary-deb-package-practical-guide. Budowanie pakietu DEB najlepiej wykonać w osobnym kontenerze po wykonaniu builda i testów, ponieważ na pakiecie DEB nie wykonamy już unit testów.
+    Osobny kontener najpierw zweryfikowałby czy unit testy przeszły, następnie bazując na obrazie z **build'a**:
+    1. Doinstalował potrzebne programy do utworzenia pakietu DEB m.in. dpkg-deb
+    2. Utworzył docelową strukturę pakietu oraz przekopiował potrzebne pliki programu w odpowiednie miejsca
+    3. Utworzył i wypełnił plik "control"
+    4. Zbudował pakiet DEB
+    5. Przetestował pakiet DEB (instalacje, usunięcie, czy program działa po zainstalowaniu itd.)
