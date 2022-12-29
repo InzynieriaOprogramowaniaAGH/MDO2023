@@ -107,8 +107,12 @@ Utworzono access token dla pipeline
 
 ![](img/20221228233518.png)  
 
-Oraz repozytorium, do którego będzie wykonywany deployment
+Który jets wykorzystywany przy deploymencie, do zalogowanie się na utworzone konto na dockerHub
 
+![](img/20221229010813.png)  
+
+
+Utworzono repozytorium, do którego będzie wykonywany deployment
 
 Diagram UML przedstawiający pipeline-workflow
 
