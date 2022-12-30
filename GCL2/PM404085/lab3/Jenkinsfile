@@ -21,7 +21,7 @@ pipeline {
 	
 	stage('Deploy') {
     steps {
-		sh "sudo docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
+		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         sh 'sudo docker build -t my-image .'
         sh 'sudo docker push myimage:latest'
     }
