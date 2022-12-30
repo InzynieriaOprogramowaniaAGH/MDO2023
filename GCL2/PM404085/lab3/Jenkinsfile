@@ -1,12 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Dependencies') {
+    stage('Checkout') {
       steps {
-        git(
-                url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git',
-                branch: 'PM404085'
-            )
+        checkout([$class: 'GitSCM', branches: [[name: 'PM404085']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git']]])
       }
     }
     stage('Build') {
