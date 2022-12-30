@@ -6,12 +6,7 @@ pipeline {
         checkout([$class: 'GitSCM', branches: [[name: 'PM404085']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git']]])
       }
     }
-    stage('Build') {
-      steps {
-		sh 'ls'
-        sh 'docker build -f GCL2/PM404085/lab2/build/Dockerfile -t builder .'
-      }
-    }
+
     stage('Test') {
       steps {
 		sh 'docker build -f GCL2/PM404085/lab2/test/Dockerfile -t tester .'
