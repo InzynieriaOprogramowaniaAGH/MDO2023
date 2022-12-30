@@ -21,9 +21,7 @@ pipeline {
 	
 	stage('Deploy') {
     steps {
-		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        sh 'sudo docker build -t my-image .'
-        sh 'sudo docker push myimage:latest'
+		sh 'sudo docker build -t my-image .'
     }
 }
   }
