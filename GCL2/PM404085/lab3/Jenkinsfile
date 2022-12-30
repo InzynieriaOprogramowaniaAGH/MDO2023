@@ -18,5 +18,12 @@ pipeline {
 		sh 'sudo docker build -f GCL2/PM404085/lab2/test/Dockerfile -t tester .'
       }
     }
+	
+	stage('Deploy') {
+	  steps {
+		sh 'docker login -u myuser -p mypassword'
+		sh 'docker push my-image'
+	  }
+	}
   }
 }
