@@ -8,6 +8,7 @@ pipeline {
     }
     stage('Build') {
       steps {
+		sh 'ls'
         sh 'docker build -f GCL2/PM404085/lab2/build/dockerfile -t builder .'
       }
     }
