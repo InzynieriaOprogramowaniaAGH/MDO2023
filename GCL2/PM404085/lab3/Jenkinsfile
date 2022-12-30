@@ -8,12 +8,13 @@ pipeline {
     }
     stage('Build') {
       steps {
-		sh 'ls'
+		sh 'sudo service docker start'
         sh 'sudo docker build -f GCL2/PM404085/lab2/build/Dockerfile -t builder .'
       }
     }
     stage('Test') {
       steps {
+		sh 'sudo service docker start'
 		sh 'sudo docker build -f GCL2/PM404085/lab2/test/Dockerfile -t tester .'
       }
     }
