@@ -23,6 +23,7 @@ pipeline {
     steps {
 		dir("GCL2/PM404085/lab2/build") {
 			sh 'sudo docker build -t my-image .'
+			sh 'sudo docker push my-image .'
 		}
     }
 }
