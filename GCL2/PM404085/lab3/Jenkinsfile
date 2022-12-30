@@ -9,12 +9,12 @@ pipeline {
     stage('Build') {
       steps {
 		sh 'ls'
-        sh 'docker build -f GCL2/PM404085/lab2/build/dockerfile -t builder .'
+        sh 'docker build -f GCL2/PM404085/lab2/build/Dockerfile -t builder .'
       }
     }
     stage('Test') {
       steps {
-		sh 'docker build -f GCL2/PM404085/lab2/test/dockerfile -t tester .'
+		sh 'docker build -f GCL2/PM404085/lab2/test/Dockerfile -t tester .'
       }
     }
   }
