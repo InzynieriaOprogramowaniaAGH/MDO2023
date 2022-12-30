@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo '--- Launching build container ---'
+                sh 'docker build -t thefuck-build -f Dockerfile.build .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo '--- Launching unit tests ---'
+                sh 'docker build -t thefuck-test -f Dockerfile.test .'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                echo '--- Launching publish ---'
+                sh 'docker build -t thefuck-publish -f Dockerfile.publish .'
+                sh 'CID=$(docker create thefuck-publish)'
+                sh 'docker cp ${CID}:/thefuck/deb_dist ./artifacts'
+                sh 'docker rm ${CID}'
+            }
+        }
+    }
+}
