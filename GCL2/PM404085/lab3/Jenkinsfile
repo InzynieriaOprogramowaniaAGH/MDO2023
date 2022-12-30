@@ -21,8 +21,8 @@ pipeline {
 	
 	stage('Deploy') {
     steps {
-        sh 'docker build -t myrepo/myimage:latest .'
-        sh 'docker push myrepo/myimage:latest'
+        sh 'sudo docker build -t myrepo/myimage:latest .'
+        sh 'sudo docker push myrepo/myimage:latest'
     }
 }
   }
