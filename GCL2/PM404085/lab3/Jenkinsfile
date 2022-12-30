@@ -24,7 +24,7 @@ pipeline {
 		dir("GCL2/PM404085/lab2/build") {
 			sh 'sudo docker build -t my-image .'
 			withCredentials([usernamePassword(credentialsId: 'ab244b3c-bdfd-4729-bf50-6784265def3b	', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-				sh "echo $DOCKERHUB_PASSWORD | docker login -u ${env.dockerhubUser} --password-stdin"
+				sh "echo $DOCKERHUB_PASSWORD | sudo docker login -u ${env.dockerhubUser} --password-stdin"
 				sh 'sudo docker push my-image'
 			}
 		}
