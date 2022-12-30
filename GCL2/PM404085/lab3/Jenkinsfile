@@ -20,10 +20,10 @@ pipeline {
     }
 	
 	stage('Deploy') {
-	  steps {
-		sh 'sudo docker login -u myuser -p mypassword'
-		sh 'sudo docker push my-image'
-	  }
-	}
+    steps {
+        sh 'docker build -t myrepo/myimage:latest .'
+        sh 'docker push myrepo/myimage:latest'
+    }
+}
   }
 }
