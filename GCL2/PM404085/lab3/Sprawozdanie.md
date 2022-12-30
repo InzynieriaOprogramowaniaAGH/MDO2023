@@ -101,8 +101,23 @@ Z deployem mam problem - udało mi się zalogować z użyciem credentiali, ale n
 
 ![](./img/12.png)
 
-Nie wiem z czego to może wynikać - nie widzę błędu w Jenkinsfilu. 
+Nie wiem z czego to może wynikać - nie widzę błędu w Jenkinsfilu:
+```
+stage('Deploy') {
+		steps {
+			dir("GCL2/PM404085/lab2/build") {
+				sh 'sudo docker build -t my-image .'
+				sh 'sudo docker tag my-image patrykmurzyn/my-image'
+				
+				withCredentials([usernamePassword(credentialsId: 'ab244b3c-bdfd-4729-bf50-6784265def3b', usernameVariable: 'MY_USERNAME', passwordVariable: 'MY_PASSWORD')]) {
+					sh 'sudo docker login -u $MY_USERNAME -p $MY_PASSWORD'
+					sh 'sudo docker push my-image'
+				}
 
+			}
+		}
+	}
+```
 
 	
 	
