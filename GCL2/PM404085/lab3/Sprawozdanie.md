@@ -52,6 +52,47 @@ Zainstalowałem Jenkinsa na WSL2:
 	
 	![](./img/7.png)
 	
-	
+## Pipeline
+
+* Definiuj pipeline korzystający z kontenerów celem realizacji kroków build -> test
+
+Konfiguracja nowego projektu:
+
+![](./img/8.png)
+
+Stworzyłem plik Jenkinsfile:
+
+```
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout([$class: 'GitSCM', branches: [[name: 'PM404085']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git']]])
+      }
+    }
+    stage('Build') {
+      steps {
+
+        sh 'sudo docker build -f GCL2/PM404085/lab2/build/Dockerfile -t builder .'
+      }
+    }
+    stage('Test') {
+      steps {
+
+		sh 'sudo docker build -f GCL2/PM404085/lab2/test/Dockerfile -t tester .'
+      }
+    }
+  }
+}
+```
+
+i umieściłem go w katalogu lab3, a następnie przeprowadziłem testy działania pipelinu:
+
+![](./img/9.png)
+
+Proces dockera budującego i testującącego zakończony powodzeniem.
+
+
 	
 	
