@@ -15,3 +15,6 @@ RUN python3 setup.py --command-packages=stdeb.command sdist_dsc --build-depends 
 # Generate DEB package
 WORKDIR /thefuck/deb_dist/thefuck-3.32
 RUN dpkg-buildpackage -rfakeroot -uc -us
+
+# Change directory to easily extract DEB file
+WORKDIR /thefuck/deb_dist
