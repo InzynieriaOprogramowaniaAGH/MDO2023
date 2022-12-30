@@ -93,6 +93,16 @@ i umieściłem go w katalogu lab3, a następnie przeprowadziłem testy działani
 
 Proces dockera budującego i testującącego zakończony powodzeniem.
 
+Z deployem mam problem - udało mi się zalogować z użyciem credentiali, ale nie mogę spushować obrazu na swoje repozytorium. Otrzymuję błąd:
+
+![](./img/10.png)
+
+![](./img/11.png)
+
+![](./img/12.png)
+
+Nie wiem z czego to może wynikać - nie widzę błędu w Jenkinsfilu. 
+
 
 	
 	
