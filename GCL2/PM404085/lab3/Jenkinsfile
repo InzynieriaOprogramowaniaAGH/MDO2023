@@ -21,7 +21,9 @@ pipeline {
 	
 	stage('Deploy') {
     steps {
-		sh 'sudo docker build -t my-image .'
+		dir("GCL2/PM404085/lab2/build") {
+			sh 'sudo docker build -t my-image .'
+		}
     }
 }
   }
