@@ -118,5 +118,14 @@ Który kończy się pozytywnie:
 
 ![](./img/14.png)
 
+Schemat działania:
+
+1) Checkout - pobranie kodu źródłowego z repozytorium Git i przygotowanie go do dalszej obróbki przez Jenkinsa.
+
+2) Build - wykonanie konkretnych czynności związanych z budowaniem projektu np. kompilacja kodu źródłowego.
+
+3) Test - przeprowadzenie testów projektu. Może zawierać różnego rodzaju polecenia związane z uruchomieniem testów jednoskotwych, integracyjnych lub akceptacyjnych. W moim przypadku przeprowadza testy jednostkowe.
+
+4) Deploy - wykonanie czynności związanych z wdrożeniem projektu np. skopiowanie plików instalacyjnych na serwer produkcyjny, uruchomienie skryptów konfiguracyjnych lub uruchomienie aplikacji w środowisku produkcyjnym. W moim przypadku jest to wysłanie obrazu kontenera na platformę Docker Hub.
 	
-	
+![](./img/15.png)	
