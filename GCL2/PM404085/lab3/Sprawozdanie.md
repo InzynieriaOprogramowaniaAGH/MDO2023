@@ -111,7 +111,7 @@ stage('Deploy') {
 				
 				withCredentials([usernamePassword(credentialsId: 'ab244b3c-bdfd-4729-bf50-6784265def3b', usernameVariable: 'MY_USERNAME', passwordVariable: 'MY_PASSWORD')]) {
 					sh 'sudo docker login -u $MY_USERNAME -p $MY_PASSWORD'
-					sh 'sudo docker push my-image'
+					sh 'sudo docker push patrykmurzyn/my-image'
 				}
 
 			}
