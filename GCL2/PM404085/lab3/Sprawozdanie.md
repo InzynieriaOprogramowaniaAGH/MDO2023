@@ -127,5 +127,5 @@ Schemat działania:
 3) Test - przeprowadzenie testów projektu. Może zawierać różnego rodzaju polecenia związane z uruchomieniem testów jednoskotwych, integracyjnych lub akceptacyjnych. W moim przypadku przeprowadza testy jednostkowe.
 
 4) Deploy - wykonanie czynności związanych z wdrożeniem projektu np. skopiowanie plików instalacyjnych na serwer produkcyjny, uruchomienie skryptów konfiguracyjnych lub uruchomienie aplikacji w środowisku produkcyjnym. W moim przypadku jest to wysłanie obrazu kontenera na platformę Docker Hub.
-	
-![](./img/15.png)	
+
+<img src="./img/15.png" height="400">
