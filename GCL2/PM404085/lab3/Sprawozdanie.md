@@ -93,15 +93,8 @@ i umieściłem go w katalogu lab3, a następnie przeprowadziłem testy działani
 
 Proces dockera budującego i testującącego zakończony powodzeniem.
 
-Z deployem mam problem - udało mi się zalogować z użyciem credentiali, ale nie mogę spushować obrazu na swoje repozytorium. Otrzymuję błąd:
+Dodałem w Jenkinsfile nowy stage - Deploy:
 
-![](./img/10.png)
-
-![](./img/11.png)
-
-![](./img/12.png)
-
-Nie wiem z czego to może wynikać - nie widzę błędu w Jenkinsfilu:
 ```
 stage('Deploy') {
 		steps {
@@ -111,13 +104,19 @@ stage('Deploy') {
 				
 				withCredentials([usernamePassword(credentialsId: 'ab244b3c-bdfd-4729-bf50-6784265def3b', usernameVariable: 'MY_USERNAME', passwordVariable: 'MY_PASSWORD')]) {
 					sh 'sudo docker login -u $MY_USERNAME -p $MY_PASSWORD'
-					sh 'sudo docker push my-image'
+					sh 'sudo docker push patrykmurzyn/my-image'
 				}
 
 			}
 		}
 	}
 ```
+
+Który kończy się pozytywnie:
+
+![](./img/13.png)
+
+![](./img/14.png)
 
 	
 	
