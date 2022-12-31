@@ -128,4 +128,4 @@ Schemat działania:
 
 4) Deploy - wykonanie czynności związanych z wdrożeniem projektu np. skopiowanie plików instalacyjnych na serwer produkcyjny, uruchomienie skryptów konfiguracyjnych lub uruchomienie aplikacji w środowisku produkcyjnym. W moim przypadku jest to wysłanie obrazu kontenera na platformę Docker Hub.
 
-<img src="./img/15.png" height="400">
+<img src="./img/15.png" height="600">
