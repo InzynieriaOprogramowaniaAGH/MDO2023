@@ -1,5 +1,5 @@
 ﻿# Sprawozdanie z zajęć 1.
-> Wykonał Michał Prochwicz
+Wykonał Michał Prochwicz \
 W przeprowadzanym ćwiczeniu użyto Ubuntu, do którego łączono się przez ssh z systemu Windows.
 1. Komunikacja ze środowiskiem linuxowym.
 * Użyto programu VirtualBox do wirtualizacji systemu linux, zapewniając mu dostęp do sieci lokalnej:\
@@ -33,13 +33,13 @@ W przeprowadzanym ćwiczeniu użyto Ubuntu, do którego łączono się przez ssh
  ![image](screeny/7_1.PNG)
  ![image](screeny/7_2.PNG)
  * Powyższe zmiany przesłano do zdalnego źródła:\
- ![image](screeny/7_3.PNG)
- ![image](screeny/7_4.PNG)
+ ![image](screeny/7_3.PNG) \
+ ![image](screeny/7_4.PNG) \
  ![image](screeny/7_5.PNG)
  * Przy próbie wciągnięcia własnej gałęzi do grupowej, wymagane jest zatwierdzenie ich połączenia:\
  ![image](screeny/7_6.PNG)
  * Oznaczenie tagiem ostatniego commita:\
- ![image](screeny/7_7.PNG)
+ ![image](screeny/7_7.png)
 8. Hooki w lokalnym repozytorium.
  * Utworzony hook, sprawdzający czy wiadomość commita zawiera nazwe przedmiotu:\
  ![image](screeny/7_8.PNG)
