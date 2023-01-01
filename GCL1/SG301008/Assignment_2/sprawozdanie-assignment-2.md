@@ -57,7 +57,7 @@ RUN git clone {repo URL}
    - ...zbuduj kod  
 RUN dotnet restore ./InventoryUniversity.sln  
 RUN dotnet build ./InventoryUniversity.sln  
-6. Zaprezentuj Dockerfile i jego zbudowanie
+6. Zaprezentuj Dockerfile i jego zbudowanie  
 ![](./screenshots/023.png)  
 ![](./screenshots/024.png)  
 ![](./screenshots/025.png)  
