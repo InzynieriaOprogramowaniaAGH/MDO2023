@@ -1,0 +1,13 @@
+FROM ubuntu
+
+RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
+RUN apt update && apt -y upgrade && apt install -y libtool autoconf tcl-dev git libz-dev 
+RUN useradd -m -s /bin/bash  sebastian 
+WORKDIR /home/sebastian
+USER sebastian
+RUN git clone https://github.com/sqlite/sqlite.git ; mkdir sqlite/bld
+WORKDIR sqlite/bld
+
+RUN ../configure
+RUN make
+RUN make sqlite3.c

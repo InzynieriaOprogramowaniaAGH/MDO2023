@@ -1,0 +1,10 @@
+FROM ubuntu:20.04
+
+
+RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
+RUN apt update && apt -y upgrade && apt install -y \
+	libtool=2.4.6-14 \
+	autoconf=2.69-11.1 \
+	tcl-dev=8.6.9+1 \
+	zlib1g-dev=1:1.2.11.dfsg-2ubuntu1.5 \
+	git=1:2.25.1-1ubuntu3.6
