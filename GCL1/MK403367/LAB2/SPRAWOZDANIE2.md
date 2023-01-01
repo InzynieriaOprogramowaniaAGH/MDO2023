@@ -211,52 +211,41 @@ npm run test:unit
 ![image description](./img/kontener-build.png)
 ![image description](./img/kontener-tests.png)
 
-Teraz tworzymy Dockerfile i na jego podstawie zbudujemy obraz
+Teraz tworzymy Dockerfile'e. na podstawie pierwszego zbudujemy obraz, drugi będzie słuzyć do testowania. Dla zachowania porządku pliki dockera zostały umieszczone w katalogu `.docker`
 
 ![image description](./img/dockerfile-ls.png)
 
-Dockerfile prezentuje się następująco
+Tym razem uzyjemy obrazu dedytkowanego dla środowiska z którego korzystamy czyli `node` zamiast `ubuntu`
+
+`Dockerfile.build` prezentuje się następująco
 ```Dockerfile
-FROM ubuntu
-
-# (ze stackoverflow się nie dyskutuje :D)
-SHELL ["/bin/bash", "--login", "-i", "-c"]
-
-RUN apt update
-RUN apt install --yes curl
-RUN apt install --yes git
-WORKDIR home
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-RUN source /root/.bashrc && nvm install 12
-
+FROM node:12
+WORKDIR app
 RUN git clone https://github.com/adityaekawade/Vue.js-unit-test-with-jest.git
-
-
 WORKDIR Vue.js-unit-test-with-jest
 RUN npm install
-CMD ["npm", "run", "build"]
+RUN npm run build
 ```
 
-Uruchamiamy budowanie obrazu, przy okazji warto go otagować. (na sc ponizej wersja bez taga)
+Uruchamiamy budowanie obrazu, przy okazji warto go otagować. (Komenda wywołana z poziomu głównego katalogu projektu).
 ```
-sudo docker build -t project_build .
+sudo docker build -f ./.docker/Dockerfile.build -t project_build .
 ```
 ![image description](./img/build.gif)
 
-Widzimy, ze powstał nowy obraz z naszego `Dockerfile'a`
+Widzimy, ze powstał nowy obraz z naszego Dockerfile'a
 
 ![image description](./img/nowy-image.png)
 
 Kolejnym krokiem będzie stworzenie obrazu do wykonywania testów bazującym na obrazie do budowania.
-
-Edytujemy nasz Dockerfile lub tworzymy nowy. Jego zawartość wygląda następująco:
+Jego zawartość prezentuje się następująco:
 ```Dockerfile
 FROM project_build
-CMD ["npm", "run", "test:unit"]
+RUN npm run test:unit
 ```
 
 Uruchamiamy build obrazu
 ```
-sudo docker build -t project_test .
+sudo docker build -f ./.docker/Dockerfile.test -t project_test .
 ```
 ![image description](./img/docker-test.png)
