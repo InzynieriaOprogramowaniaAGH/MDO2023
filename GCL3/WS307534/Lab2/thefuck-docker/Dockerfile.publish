@@ -1,0 +1,20 @@
+FROM thefuck-test:latest
+
+# Install the necessary build tools and dependencies
+RUN apt-get update && apt-get install -y dh-python python3-stdeb fakeroot python3-all
+
+# Change to the app directory
+WORKDIR /thefuck
+
+# Configure the environment for building package
+RUN python3 setup.py build
+
+# Generate source packages
+RUN python3 setup.py --command-packages=stdeb.command sdist_dsc --build-depends python3-distutils
+
+# Generate DEB package
+WORKDIR /thefuck/deb_dist/thefuck-3.32
+RUN dpkg-buildpackage -rfakeroot -uc -us
+
+# Change directory to easily extract DEB file
+WORKDIR /thefuck/deb_dist

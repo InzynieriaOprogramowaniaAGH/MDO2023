@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo '--- Launching build container ---'
+                sh 'docker build -t thefuck-build -f GCL3/WS307534/Lab2/thefuck-docker/Dockerfile.build .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo '--- Launching unit tests ---'
+                sh 'docker build -t thefuck-test -f GCL3/WS307534/Lab2/thefuck-docker/Dockerfile.test .'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                echo '--- Launching publish ---'
+                sh '''
+                    docker build -t thefuck-publish -f GCL3/WS307534/Lab2/thefuck-docker/Dockerfile.publish .
+                    CID=$(docker create thefuck-publish)
+                    docker cp ${CID}:/thefuck/deb_dist ./artifacts
+                    docker rm ${CID}
+                '''
+            }
+        }
+    }
+}

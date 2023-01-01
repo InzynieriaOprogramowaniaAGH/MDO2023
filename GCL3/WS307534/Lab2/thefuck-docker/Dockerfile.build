@@ -1,0 +1,13 @@
+# syntax=docker/dockerfile:1
+FROM ubuntu:22.04 AS build
+
+# install app dependencies
+RUN apt-get update && apt-get install -y python3 python3-pip git
+
+# clone repo
+RUN git clone https://github.com/nvbn/thefuck.git
+WORKDIR /thefuck
+
+# setup environment
+RUN pip install -r requirements.txt
+RUN python3 setup.py develop

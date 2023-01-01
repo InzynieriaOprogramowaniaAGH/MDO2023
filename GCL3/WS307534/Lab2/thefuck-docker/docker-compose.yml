@@ -1,0 +1,11 @@
+services:
+  apptest:
+    image: thefuck-docker-appbuild
+    depends_on:
+      - appbuild
+    command: python3 -m pytest
+
+  appbuild:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
