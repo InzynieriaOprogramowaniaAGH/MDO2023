@@ -8,29 +8,29 @@
 1.	Wykaż możliwość komunikacji ze środowiskiem linuksowym (powłoka oraz przesyłanie plików) 
     - Połączenie przez SSH i SFTP za pomocą programu Termius. 
     
-    ![SS](./screenshots/1.png)
-    ![SS](./screenshots/2.png)
-    ![SS](./screenshots/3.png)
+    ![SS](./screenshots/Sprawozdanie1/1.png)
+    ![SS](./screenshots/Sprawozdanie1/2.png)
+    ![SS](./screenshots/Sprawozdanie1/3.png)
 
 2.	Zainstaluj klienta Git i obsługę kluczy SSH
         - Zainstalowany git, generator kluczy ssh - weryfikacja poleceniami:
         
         git 
         ssh-keygen
-    ![SS](./screenshots/cert1.png)
-    ![SS](./screenshots/cert2.png)
+    ![SS](./screenshots/Sprawozdanie1/cert1.png)
+    ![SS](./screenshots/Sprawozdanie1/cert2.png)
 
 
 3.	Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2023 za pomocą HTTPS
         - Polecenie git clone: 
             
         git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2023
-    ![SS](./screenshots/gitCloneHTTPS.png)
+    ![SS](./screenshots/Sprawozdanie1/gitCloneHTTPS.png)
 
 
 4.	Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
     
-    ![SS](./screenshots/sshKeys_For_sshClone.png)
+    ![SS](./screenshots/Sprawozdanie1/sshKeys_For_sshClone.png)
 
     - Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem - 2 klucze ed25519 polecenie: 
     
@@ -44,7 +44,7 @@
     - Sklonuj repozytorium z wykorzystaniem protokołu SSH
     
             git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2023.git
-    ![SS](./screenshots/HTTPSclone.png)
+    ![SS](./screenshots/Sprawozdanie1/HTTPSclone.png)
 
 
 5.	Przełącz się na gałąź swojej grupy
@@ -56,7 +56,7 @@
 
 6.	Utwórz gałąź o nazwie "inicjały & nr indeksu" np. ```KD232144```
     Utworzenie mojej gałęzi
-    ![SS](./screenshots/checkout.png)
+    ![SS](./screenshots/Sprawozdanie1/checkout.png)
         
         git branch GB294242
 
@@ -132,7 +132,7 @@
     * zapewnij dostęp do maszyny wirtualnej przez zdalny terminal (nie "przez okienko")
         
         Dostęp do maszyny wykazany w pierwszym punkcie - maszyna wirtualna (AWS EC2) 
-        ![SS](./screenshots/sshVersion.png)
+        ![SS](./screenshots/Sprawozdanie1/sshVersion.png)
     * jeżeli nie jest stosowane VM (np. WSL, Mac, natywny linux), wykaż ten fakt **dokładnie**
         
         Stosowana jest maszyna virtualna typu EC2 dostarczana przez AWS
@@ -141,7 +141,7 @@
 
         docker --version
         Docker version 20.10.12, build 20.10.12-0ubuntu4
-        ![SS](./screenshots/dockerVersion.png)
+        ![SS](./screenshots/Sprawozdanie1/dockerVersion.png)
 4. Działanie środowiska
     * wykaż, że środowisko dockerowe jest uruchomione i działa (z definicji)
 
@@ -162,7 +162,7 @@
 
         docker --version
         Docker version 20.10.12, build 20.10.12-0ubuntu4
-        ![SS](./screenshots/dockerVersion.png)
+        ![SS](./screenshots/Sprawozdanie1/dockerVersion.png)
     * pobierz obraz dystrybucji linuksowej i uruchom go         
             
         sudo docker pull ubuntu 
@@ -175,4 +175,4 @@
     
     Posiadam konto na DockerHub i zabezpieczyłem go 2FA.
     
-    ![SS](./screenshots/dockerHub.png)
+    ![SS](./screenshots/Sprawozdanie1/dockerHub.png)
