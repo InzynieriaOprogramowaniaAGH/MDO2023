@@ -1,0 +1,6 @@
+FROM node:12
+WORKDIR app
+RUN git clone https://github.com/longmaikel/Vue.js-unit-test-with-jest.git
+WORKDIR Vue.js-unit-test-with-jest
+RUN npm install
+RUN npm run build

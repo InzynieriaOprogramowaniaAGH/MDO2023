@@ -1,0 +1,2 @@
+FROM project_build
+RUN npm run test:unit
