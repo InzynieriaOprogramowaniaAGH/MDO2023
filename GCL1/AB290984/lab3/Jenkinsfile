@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'sudo docker build -f../lab2/Dockerfile -t test123 .'
+            }
+        }
+    }
+}
