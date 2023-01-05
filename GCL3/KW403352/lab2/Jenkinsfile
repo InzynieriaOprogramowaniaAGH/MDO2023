@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                sh 'docker build -t artifact .'
+                sh 'docker build -f GCL3/KW403352/lab2/build/Dockerfile -t artifact .'
                 sh 'docker tag artifact wolskyyy/artifact'
                 sh 'docker push wolskyyy/artifact'
             }
