@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Cloning') {
             steps {
-                git url:'https://github.com/Wolskyyy/calculator-unit-test-example-java.git', branch: 'master'
+                git url:'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git', branch: 'KW403352'
             }
         }
         stage('Building') {
