@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Cloning') {
+            steps {
+                git url:'https://github.com/Wolskyyy/calculator-unit-test-example-java.git', branch: 'master'
+            }
+        }
+        stage('Building') {
+            steps {
+                sh 'docker build build --tag build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker build test --tag test'
+            }
+        }
+    }
+}
