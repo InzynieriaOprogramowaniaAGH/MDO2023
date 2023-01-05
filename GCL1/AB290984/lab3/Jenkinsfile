@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'rm -rf MDO2023'
+                sh 'rm -rf MDO2023 || ls'
                 sh 'git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git'
                 sh 'git checkout -b local_AB290984 origin/AB290984'
                 sh 'docker build -f MDO2023/GCL1/AB290984/lab2/Dockerfile -t test123 .'
