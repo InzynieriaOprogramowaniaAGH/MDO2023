@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+    
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('dockerhubacc')
+    }
+    
     stages {
         stage('Cloning') {
             steps {
@@ -17,10 +21,16 @@ pipeline {
                 sh 'docker build -f GCL3/KW403352/lab2/test/Dockerfile -t test .'
             }
         }
+        stage('Login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
         stage('Publish') {
             steps {
-                withDockerRegistry([ credentialsId: "dockerhubacc", url: "" ])
-                dockerImage.push()
+                sh 'docker build -t artifact .'
+                sh 'docker tag artifact wolskyyy/artifact'
+                sh 'docker push wolskyyy/artifact'
             }
         }
     }
