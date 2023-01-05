@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -f../lab2/Dockerfile -t test123 .'
+                sh 'git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git'
+                sh 'docker build -f MDO2023/GCL1/AB290984/lab2/Dockerfile -t test123 .'
             }
         }
     }
