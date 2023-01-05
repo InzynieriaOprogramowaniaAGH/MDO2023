@@ -2,11 +2,13 @@ pipeline {
     agent any
 
     stages {
+		stage('Checkout') {
+		  steps {
+			checkout([$class: 'GitSCM', branches: [[name: 'AB290984']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git']]])
+		  }
+		}
         stage('Build') {
             steps {
-                sh 'rm -rf MDO2023 || ls'
-                sh 'git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git'
-                sh 'git checkout -b local_AB290984 origin/AB290984'
                 sh 'docker build -f MDO2023/GCL1/AB290984/lab2/Dockerfile -t test123 .'
             }
         }
