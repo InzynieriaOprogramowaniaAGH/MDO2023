@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo docker build -f../lab2/Dockerfile -t test123 .'
+                sh 'docker build -f../lab2/Dockerfile -t test123 .'
             }
         }
     }
