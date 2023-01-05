@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Building') {
             steps {
-                sh 'docker build build --tag build'
+                sh 'docker build GCL3/KW403352/lab2/build/Dockerfile --tag build'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'docker build test --tag test'
+                sh 'docker build GCL3/KW403352/lab2/test/Dockerfile --tag test'
             }
         }
     }
