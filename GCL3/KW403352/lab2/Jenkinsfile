@@ -17,5 +17,11 @@ pipeline {
                 sh 'docker build -f GCL3/KW403352/lab2/test/Dockerfile -t test .'
             }
         }
+        stage('Publish') {
+            steps {
+                withDockerRegistry([ credentialsId: "dockerhubacc", url: "" ])
+                dockerImage.push()
+            }
+        }
     }
 }
