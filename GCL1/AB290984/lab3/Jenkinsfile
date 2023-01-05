@@ -9,7 +9,7 @@ pipeline {
 		}
         stage('Build') {
             steps {
-                sh 'docker build -f MDO2023/GCL1/AB290984/lab2/Dockerfile -t test123 .'
+                sh 'docker build -f GCL1/AB290984/lab2/Dockerfile -t test123 .'
             }
         }
     }
