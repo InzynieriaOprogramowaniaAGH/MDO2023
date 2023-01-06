@@ -13,4 +13,8 @@
 4.  Rozpocznij pracę na nowej gałęzi ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/1536d4b0b2cd9a93d643e03f06f35c4f.png)
     1.  W katalogu właściwym dla grupy utwórz nowy katalog, także o nazwie „inicjały & nr indeksu” no KD232144
     2.  W nowym katalogu dodaj plik ze sprawozdaniem
-    3.  Dodaj zrzuty ekranu
+    3.  Dodaj zrzuty ekranu ![Obraz zawierający tekst, monitor, czarny, zrzut ekranu Opis wygenerowany automatycznie](media/30fb0be3f102ba080240ed42f2660786.png)
+    4.  Wyślij zmiany do zdalnego źródła ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/3a635446da9c6658e7fd45079bc41307.png) ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/b1670480115b52cf09cc810395f7f53b.png)
+    5.  Spróbuj wciągnąć swoją gałąź do gałęzi grupowej ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/6e113e89efc9dfbb49a9de317bc982bd.png)
+    6.  Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi) ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/26c87cf7d2f8b5dfa9864a5438e8d135.png)
+    7.  
