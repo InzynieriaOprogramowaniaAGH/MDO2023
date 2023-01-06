@@ -285,7 +285,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Do repozytorium dodany został `Jenkinsfile`. Poszczególne kroki wykorzystują kontenery opisane powyzej. Kontenery współdzielą volume z katalogiem aplikacji. Pipline składa się z 5 kroków. 
+Do repozytorium dodany został `Jenkinsfile`. Poszczególne kroki wykorzystują kontenery opisane powyzej. Kontenery współdzielą volume z katalogiem aplikacji. Pipline składa się z 6 kroków. 
 - Checkout - klonuje repozytorium z aplikacją
 - Dependencies - przygotowywuje wszystkie niezbędne składniki dla dalszych kroków (głównie chodzi tutaj o pobranie `node_modules`)
 - Test - w przypadku aplikacji JavaScript nie jest wymagane utworzenie builda do testowania aplikacji testami unitowymi. Mozna więc ten krok wykonanć przed buildem, bo jezeli testy nie przejdą nie ma sensu budowac naszej aplikacji.
