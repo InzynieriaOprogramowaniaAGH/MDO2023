@@ -246,6 +246,8 @@ Po ponowym uruchomieniu projektu, budowanie kończy sie sukcesem.
 
 ### Pipeline
 
+![image description](./img/diag.png)
+
 Zdecydowałem się zmienić nieco podejście i zmienić moje Dockerfile'e. Główną zmianą jest stworzenie nowych Dockerfile'ów - zawierającego dependencje oraz uruchomieniowego. Ponadto nie klonuję repozytorium wewnątrz kontenera tylko poza nimi. Dockerfile'e prezentują się następująco:
 
 Dockerfile zawierający dependencje kopiuje `package.json` czyli plik z wszystkimi niezbędnymi bibliotekami. Dlaczego wybrałem wersję 12 node'a opisuję w sprawku nr 2.
@@ -284,7 +286,8 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 Do repozytorium dodany został `Jenkinsfile`. Poszczególne kroki wykorzystują kontenery opisane powyzej. Kontenery współdzielą volume z katalogiem aplikacji. Pipline składa się z 5 kroków. 
-- Checkout - pobiera repozytorium z aplikacją
+- Checkout - klonuje repozytorium z aplikacją
+- Dependencies - przygotowywuje wszystkie niezbędne składniki dla dalszych kroków (głównie chodzi tutaj o pobranie `node_modules`)
 - Test - w przypadku aplikacji JavaScript nie jest wymagane utworzenie builda do testowania aplikacji testami unitowymi. Mozna więc ten krok wykonanć przed buildem, bo jezeli testy nie przejdą nie ma sensu budowac naszej aplikacji.
 - Build - efektem końcowym naszej aplikacji jest katalog `dist` do którego zostają wyplute wszytkie statyczne pliki niezbędne do odpalenia naszej aplikacji takie jak zminifikowane pliki `.js`, pliki styli `.css`, plik `index.html`, który jest entrypointem do naszej aplikacji oraz inne statyczne pliki takie jak grafiki i ikony.
 - Deploy - ten krok odpala kontener z serwerem zdolnym zaserwować build naszej aplikacji
