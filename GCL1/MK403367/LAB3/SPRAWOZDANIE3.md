@@ -242,7 +242,62 @@ Teraz test działa!
 
 Po ponowym uruchomieniu projektu, budowanie kończy sie sukcesem.
 
-
 ![image description](./img/prawdziwy-build-success.png)
 
+### Pipeline
 
+Zdecydowałem się zmienić nieco podejście i zmienić moje Dockerfile'e. Główną zmianą jest stworzenie nowych Dockerfile'ów - zawierającego dependencje oraz uruchomieniowego. Ponadto nie klonuję repozytorium wewnątrz kontenera tylko poza nimi. Dockerfile'e prezentują się następująco:
+
+Dockerfile zawierający dependencje kopiuje `package.json` czyli plik z wszystkimi niezbędnymi bibliotekami. Dlaczego wybrałem wersję 12 node'a opisuję w sprawku nr 2.
+```Dockerfile
+# Dockerfile.dep
+FROM node:12
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+CMD ["npm", "install"]
+```
+
+Dockerfile testujący odpala testy jednostkowe. polecenie `.exit` zostawiłem aby mieć pewność, ze znajdujemy się w wierszu poleceń a nie wewnątrz serwera node.
+```Dockerfile
+# Dockerfile.test
+FROM project_dep
+CMD [".exit"]
+CMD ["npm", "run", "test:unit"]
+```
+
+Dockerfile budujący buduje statyczne pliki naszej aplikacji.
+```Dockerfile
+# Dockerfile.build
+FROM project_dep
+CMD [".exit"]
+CMD ["npm", "run", "build"]
+```
+
+Dockerfile uruchamiający stawia serwer do serwowania aplikacji. Jest to serwer nginx do serwowania statycznych plików.
+```Dockerfile
+# Dockerfile.run
+FROM nginx:stable-alpine
+COPY /dist/ /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+Do repozytorium dodany został `Jenkinsfile`. Poszczególne kroki wykorzystują kontenery opisane powyzej. Kontenery współdzielą volume z katalogiem aplikacji. Pipline składa się z 5 kroków. 
+- Checkout - pobiera repozytorium z aplikacją
+- Test - w przypadku aplikacji JavaScript nie jest wymagane utworzenie builda do testowania aplikacji testami unitowymi. Mozna więc ten krok wykonanć przed buildem, bo jezeli testy nie przejdą nie ma sensu budowac naszej aplikacji.
+- Build - efektem końcowym naszej aplikacji jest katalog `dist` do którego zostają wyplute wszytkie statyczne pliki niezbędne do odpalenia naszej aplikacji takie jak zminifikowane pliki `.js`, pliki styli `.css`, plik `index.html`, który jest entrypointem do naszej aplikacji oraz inne statyczne pliki takie jak grafiki i ikony.
+- Deploy - ten krok odpala kontener z serwerem zdolnym zaserwować build naszej aplikacji
+- Publish - pakuje katalog z naszym buildem aby było gotowy do dalszej drogi. (Normalnie to wysłałbym to na jakiś serwer produkcyjny ale nie ma takiej potrzeby tutaj więc tylko go skapowałem, mozna równiez pobrac skapowany build i odpalić lokalnie w przeglądrce gdyz jest to apliakcja JS)
+
+W panelu Jenkinsa tworzymy nowy projekt. Wybieramy pipeline i w definicji wybieramy `Pipeline script from SCM`, ustawiamy repo z naszym Jenkinsfile'em oraz wybieramy branch.
+
+![image description](./img/config-1.png)
+![image description](./img/config-2.png)
+
+Gdy Pipline jest gotowy odpalamy go.
+
+Początkowo pojawiały się błędy - były one związane z niepoprawną składnią Jenkinsfile'a.
+
+![image description](./img/pipeline-fail.png)
+![image description](./img/pipeline.png)
