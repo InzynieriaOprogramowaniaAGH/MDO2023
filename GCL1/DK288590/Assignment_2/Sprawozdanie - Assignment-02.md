@@ -12,35 +12,33 @@
 ![](./ss/005.png)  
 5. Uruchom "system w kontenerze"  
    - Zaprezentuj PID1 w kontenerze i procesy dockera na hoście  
-![](./ss/007.png)  
-![](./ss/006.png)  
+![](./ss/008.png)   
    - Zaktualizuj pakiety  
-![](./ss/008.png)  
+![](./ss/009.png)  
    - Wyjdź  
 Komenda "exit"  
 6. Pokaż uruchomione ( != "działające" ) kontenery, wyczyść je.  
-![](./ss/009.png)  
 ![](./ss/010.png)  
-7. Wyczyść obrazy  
 ![](./ss/011.png)  
+7. Wyczyść obrazy  
+![](./ss/012.png)  
 
 ## Budowanie programu  
 1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych  
-![](./ss/012.png)  
-2. Przeprowadź budowę/konfigurację środowiska  
 ![](./ss/013.png)  
+2. Przeprowadź budowę/konfigurację środowiska  
 ![](./ss/014.png)  
 ![](./ss/015.png)  
-3. Uruchom testy  
 ![](./ss/016.png)  
+3. Uruchom testy  
+![](./ss/017.png)  
 4. Ponów ten proces w kontenerze  
    - Wybierz i uruchom platformę  
 Wybrano ubuntu:latest  
    - Zaopatrz ją w odpowiednie oprogramowanie wstępne  
-![](./ss/017.png)  
 ![](./ss/018.png)  
    - Sklonuj aplikację  
-![](./ss/019.png)  
+![](./ss/018.png)  
    - Skonfiguruj środowisko i uruchom build  
 ![](./ss/020.png)  
 ![](./ss/021.png)  
@@ -71,6 +69,6 @@ RUN dotnet build ./InventoryUniversity.sln
 1. Zdefiniuj kompozycję, która stworzy dwie usługi  
    - Pierwszą na bazie dockerfile'a budującego  
    - Drugą na bazie pierwszej  
-![](./ss/032.png)  
+![](./ss/030.png)  
 2. Wdróż :)  
-![](./ss/033.png)     
+![](./ss/031.png)     
