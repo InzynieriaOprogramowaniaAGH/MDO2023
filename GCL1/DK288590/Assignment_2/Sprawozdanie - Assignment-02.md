@@ -58,9 +58,8 @@ RUN dotnet build ./InventoryUniversity.sln
 ![](./ss/024.png)  
 ![](./ss/025.png)  
 ![](./ss/026.png)  
-![](./ss/027.png)  
 7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy  
-![](./ss/028.png)  
+![](./ss/027.png)  
  	* Kontener pierwszy ma przeprowadzać wszystkie kroki aż do builda  
 ![](./ss/028.png)  
 	* Kontener drugi ma bazować na pierwszym i wykonywać testy  
