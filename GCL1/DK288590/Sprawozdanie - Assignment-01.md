@@ -17,4 +17,6 @@
     4.  Wyślij zmiany do zdalnego źródła ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/3a635446da9c6658e7fd45079bc41307.png) ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/b1670480115b52cf09cc810395f7f53b.png)
     5.  Spróbuj wciągnąć swoją gałąź do gałęzi grupowej ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/6e113e89efc9dfbb49a9de317bc982bd.png)
     6.  Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi) ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/26c87cf7d2f8b5dfa9864a5438e8d135.png)
-    7.  
+    7.  Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź ![Obraz zawierający tekst Opis wygenerowany automatycznie](media/af1879b3f7f422c11f34191348f21626.png)
+    8.  Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu ![Obraz zawierający tekst, zrzut ekranu, sprzęt elektroniczny, komputer Opis wygenerowany automatycznie](media/bf847238bc064fd63e0c0edb9193c0e5.png)
+    9.  
