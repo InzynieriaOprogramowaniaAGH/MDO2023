@@ -67,9 +67,7 @@ RUN dotnet build ./InventoryUniversity.sln
 ![](./ss/028.png)  
 	* Kontener drugi ma bazować na pierwszym i wykonywać testy  
 ![](./ss/029.png)  
-## Runda bonusowa: kompozycja  
-![](./ss/030.png)  
-![](./ss/031.png)  
+## Runda bonusowa: kompozycja   
 1. Zdefiniuj kompozycję, która stworzy dwie usługi  
    - Pierwszą na bazie dockerfile'a budującego  
    - Drugą na bazie pierwszej  

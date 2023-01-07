@@ -1,0 +1,12 @@
+services:
+  todo_list_test:
+    image: todo-list-test:1.0.0
+    depends_on:
+      - todo_list_build
+    command: dotnet test
+
+  todo_list_build:
+    build:
+      context: ./
+      dockerfile: dockerfile-build
+    image: todo-list:1.0.0
