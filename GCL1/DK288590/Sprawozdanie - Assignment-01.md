@@ -1,4 +1,4 @@
-1.  Wyykaż możliwość komunikacji ze środowiskiem linuksowym (powłoka oraz przesyłanie plików) ![](./ss/Obraz1.png)
+1.  Wyyykaż możliwość komunikacji ze środowiskiem linuksowym (powłoka oraz przesyłanie plików) ![](./ss/Obraz1.png)
 2.  Zainstaluj klienta Git i obsługę kluczy SSH ![Obraz zawierający tekst Opis wygenerowany automatycznie](./ss/Obraz2.png)
 3.  Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2023 za pomocą HTTPS ![Obraz zawierający tekst Opis wygenerowany automatycznie](./ss/Obraz3.png)
 4.  Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
