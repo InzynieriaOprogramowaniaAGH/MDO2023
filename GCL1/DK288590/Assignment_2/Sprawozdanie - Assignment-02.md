@@ -34,16 +34,16 @@ Komenda "exit"
 ![](./ss/017.png)  
 4. Ponów ten proces w kontenerze  
    - Wybierz i uruchom platformę  
-Wybrano ubuntu:latest  
+Wybrano mcr.microsoft.com/dotnet/sdk:7.0  
    - Zaopatrz ją w odpowiednie oprogramowanie wstępne  
 ![](./ss/018.png)  
    - Sklonuj aplikację  
-![](./ss/018.png)  
-   - Skonfiguruj środowisko i uruchom build  
 ![](./ss/020.png)  
+   - Skonfiguruj środowisko i uruchom build  
 ![](./ss/021.png)  
-   - Uruchom testy  
 ![](./ss/022.png)  
+   - Uruchom testy  
+![](./ss/023.png)  
 5. Stwórz Dockerfile, który ma to osiągnąć  
    - Na bazie platformowego obrazu...  
 FROM ubuntu
@@ -55,12 +55,12 @@ RUN git clone {repo URL}
 RUN dotnet restore ./InventoryUniversity.sln  
 RUN dotnet build ./InventoryUniversity.sln  
 6. Zaprezentuj Dockerfile i jego zbudowanie  
-![](./ss/023.png)  
 ![](./ss/024.png)  
 ![](./ss/025.png)  
 ![](./ss/026.png)  
-7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy  
 ![](./ss/027.png)  
+7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy  
+![](./ss/028.png)  
  	* Kontener pierwszy ma przeprowadzać wszystkie kroki aż do builda  
 ![](./ss/028.png)  
 	* Kontener drugi ma bazować na pierwszym i wykonywać testy  
