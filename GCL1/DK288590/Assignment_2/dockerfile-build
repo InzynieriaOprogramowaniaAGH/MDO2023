@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0
+
+RUN git clone https://github.com/Dahard/todo-list-backend.git
+WORKDIR /todo-list-backend/ToDoListAPI
+RUN dotnet build
