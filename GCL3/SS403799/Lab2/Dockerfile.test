@@ -1,0 +1,2 @@
+FROM makesitebuild
+RUN pytest test
