@@ -1,0 +1,12 @@
+services:
+  inventorytest:
+    image: inventory:1.0
+    depends_on:
+      - inventorybuild
+    command: dotnet test ./InventoryUniversity.sln
+
+  inventorybuild:
+    build:
+      context: ./
+      dockerfile: Dockerfile_build
+    image: inventory:1.0

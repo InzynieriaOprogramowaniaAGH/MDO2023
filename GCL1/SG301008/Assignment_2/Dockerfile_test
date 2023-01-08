@@ -1,0 +1,3 @@
+FROM inventory:1.0
+
+RUN dotnet test ./InventoryUniversity.sln
