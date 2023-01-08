@@ -1,0 +1,3 @@
+FROM dockerbuild:1.0
+
+RUN make test
