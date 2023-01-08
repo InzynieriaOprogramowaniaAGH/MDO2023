@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('6040990e-9103-466b-b73a-c7018989f724')
+    }
     stages {
 		stage('Checkout') {
 		  steps {
@@ -15,6 +17,14 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'docker build -f GCL1/AB290984/lab2/test/Dockerfile -t test321 .'
+            }
+        }
+        stage('Publish') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker build -f GCL1/AB290984/lab2/Dockerfile -t artefakt .'
+                sh 'docker tag artefakt laocane/artefakt'
+                sh 'docker push laocane/artefakt'
             }
         }
     }
