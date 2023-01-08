@@ -35,7 +35,9 @@
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
   * Wymagania wstępne środowiska
   * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
+  ![](./images/3-15.png)
   * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+  ![](./images/3-16.png)
   
 ### Pipeline
 * Definiuj pipeline korzystający z kontenerów celem realizacji kroków `build -> test`
