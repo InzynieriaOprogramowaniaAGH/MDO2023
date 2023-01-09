@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhubacc')
-    }
+   // environment {
+       //DOCKERHUB_CREDENTIALS=credentials('jasko09')
+   //}
     
     stages {
         stage('Cloning') {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Building') {
             steps {
-                sh 'docker build -f GCL1/JK404752/Lab2/build/Dockerfile -t build .'
+                sh 'docker build -f GCL1/JK404752/Lab2/bulid/Dockerfile -t build .'
             }
         }
         stage('Test') {
@@ -21,17 +21,17 @@ pipeline {
                 sh 'docker build -f GCL1/JK404752/Lab2/test/Dockerfile -t test .'
             }
         }
-        stage('Login') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
-        stage('Publish') {
-            steps {
-                sh 'docker build -f GCL1/JK404752/Lab2/build/Dockerfile -t artifact .'
-                sh 'docker tag artifact jasko09/artifact'
-                sh 'docker push jasko09/artifact'
-            }
-        }
+       // stage('Login') {
+        //    steps {
+       //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+       //     }
+     //   }
+       // stage('Publish') {
+      //      steps {
+      //          sh 'docker build -f GCL1/JK404752/Lab2/build/Dockerfile -t artifact .'
+      //          sh 'docker tag artifact jasko09/artifact'
+      //          sh 'docker push jasko09/artifact'
+       //     }
+      //  }
     }
 }
