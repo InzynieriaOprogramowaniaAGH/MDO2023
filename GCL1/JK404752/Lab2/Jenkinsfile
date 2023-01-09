@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    environment {
-       // DOCKERHUB_CREDENTIALS=credentials('dockerhubacc')
-    }
+   // environment {
+      // DOCKERHUB_CREDENTIALS=credentials('dockerhubacc')
+  //  }
     
     stages {
         stage('Cloning') {
