@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Building') {
             steps {
-                sh 'docker build -f GCL1/JK404752/Lab2/build/Dockerfile -t build .'
+                sh 'docker build -f GCL1/JK404752/Lab2/bulid/Dockerfile -t build .'
             }
         }
         stage('Test') {
