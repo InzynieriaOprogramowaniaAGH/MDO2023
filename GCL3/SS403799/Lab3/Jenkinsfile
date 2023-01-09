@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Collect') {
+            steps {
+                echo "--- COLLECT ---"
+                git url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git',
+                branch: 'SS403799'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo '--- BUILD ---'
+                sh 'docker build -f GCL3/SS403799/Lab2/Dockerfile -t makesitebuild .'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo '--- TEST ---'
+                sh 'docker build -f GCL3/SS403799/Lab2/Dockerfile.test -t makesitebuild .'
+            }
+        }
+        stage('Publish') {
+            steps {
+                echo '--- PUBLISH ---'
+                sh '''DC=$(docker create makesitebuild)
+                docker cp ${DC}:makesite/_site artifacts
+                docker rm ${DC}
+                '''
+            }
+        }
+    }
+}
