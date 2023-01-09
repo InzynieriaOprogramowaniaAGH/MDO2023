@@ -1,0 +1,3 @@
+FROM makesitebuild
+WORKDIR /makesite/_site
+ENTRYPOINT ["python3", "-m", "http.server"]
