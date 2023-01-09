@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('dockerhubacc')
+    }
+    
+    stages {
+        stage('Cloning') {
+            steps {
+                git url:'https://github.com/InzynieriaOprogramowaniaAGH/MDO2023.git', branch: 'JK404752'
+            }
+        }
+        stage('Building') {
+            steps {
+                sh 'docker build -f GCL1/JK404752/Lab2/build/Dockerfile -t build .'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker build -f GCL1/JK404752/Lab2/test/Dockerfile -t test .'
+            }
+        }
+        stage('Login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('Publish') {
+            steps {
+                sh 'docker build -f GCL1/JK404752/Lab2/build/Dockerfile -t artifact .'
+                sh 'docker tag artifact jasko09/artifact'
+                sh 'docker push jasko09/artifact'
+            }
+        }
+    }
+}
