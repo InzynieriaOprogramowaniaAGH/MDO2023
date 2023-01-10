@@ -97,19 +97,20 @@ Wynik builda w konsoli:
   
 ### Pipeline
 Diagram aktywnoœci:  
-![](./screenshots/015.png)  
-Checkout - klonuje swoje repozytorium `https://github.com/szymongamza/DevOpsJenkinsTry`
-Build - uruchamia kontener który buduje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa `mcr.microsoft.com/dotnet/sdk:7.0`
-Test - uruchamia kontener który testuje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa obraz buduj¹cy z poprzedniego stage'a
-Publish - buduje moj¹ aplikacjê pod kilka platform w wersji `--self-contained` jako artefakty, w celu ³atwego uruchomienia starych wersji aplikacji bez martwienia siê o dependencje. W celu ³atwego wdra¿ania, budujê dodatkowy obraz posiadaj¹cy aplikacjê w formie `framework-dependent binary` oparty na obrazie runtime `mcr.microsoft.com/dotnet/aspnet:7.0`, pozwala to na dowoln¹ cross-platformowoœæ i ³atwy deploy.
-Deploy - przes³anie obrazu do docker hub'a.
-Diagram wdro¿eniowy:
-![](./screenshots/016.png)  
-Wdro¿eniem u mnie jest, przes³anie obrazu do Docker Hub'a z œrodowiska Jenkins.
+![](./screenshots/015.jpg)  
+Checkout - klonuje swoje repozytorium `https://github.com/szymongamza/DevOpsJenkinsTry`  
+Build - uruchamia kontener który buduje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa `mcr.microsoft.com/dotnet/sdk:7.0`  
+Test - uruchamia kontener który testuje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa obraz buduj¹cy z poprzedniego stage'a  
+Publish - buduje moj¹ aplikacjê pod kilka platform w wersji `--self-contained` jako artefakty, w celu ³atwego uruchomienia starych wersji aplikacji bez martwienia siê o dependencje. W celu ³atwego wdra¿ania, budujê dodatkowy obraz posiadaj¹cy aplikacjê w formie `framework-dependent binary` oparty na obrazie runtime `mcr.microsoft.com/dotnet/aspnet:7.0`, pozwala to na dowoln¹ cross-platformowoœæ i ³atwy deploy.  
+Deploy - przes³anie obrazu do docker hub'a.  
+Diagram wdro¿eniowy:  
+![](./screenshots/016.jpg)  
+Wdro¿eniem u mnie jest, przes³anie obrazu do Docker Hub'a z œrodowiska Jenkins.  
 Tak wygl¹da konfiguracja Pipeline'a w Jenkins:  
 ![](./screenshots/017.png)  
 Tak wygl¹da repozytorium z plikami `Jenkinsfile` oraz przydatnymi `Dockerfile`:  
 ![](./screenshots/018.png)  
+Jenkinsfile:  
 ```Jenkinsfile
 pipeline {
     agent any
@@ -164,6 +165,7 @@ pipeline {
 	}
 }
 ```
+Dockerfile.b:  
 ```Dockerfile.b
 FROM mcr.microsoft.com/dotnet/sdk:7.0
 COPY . .
@@ -171,10 +173,12 @@ RUN ls
 RUN dotnet restore ToDoListAPI.sln
 RUN dotnet build ToDoListAPI.sln
 ```
+Dockerfile.t:  
 ```Dockerfile.t
 FROM image_build
 RUN dotnet test ToDoListAPI.sln
 ```
+Dockerfile.pub:  
 ```Dockerfile.pub
 FROM image_test
 RUN dotnet publish "./ToDoListAPI.sln" -c Release -o /app/publish/dockerize
@@ -182,6 +186,7 @@ RUN dotnet publish -r win-x64 --self-contained true "./ToDoListAPI.sln" -c Relea
 RUN dotnet publish -r linux-x64 --self-contained true "./ToDoListAPI.sln" -c Release -o /app/publish/linux-x64
 RUN dotnet publish -r osx-x64 --self-contained true "./ToDoListAPI.sln" -c Release -o /app/publish/osx-x64
 ```
+Dockerfile.dep:  
 ```Dockerfile.dep
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 EXPOSE 80
