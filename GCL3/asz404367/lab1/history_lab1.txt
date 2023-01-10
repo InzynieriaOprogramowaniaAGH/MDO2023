@@ -1,0 +1,182 @@
+  1208  git branch -l
+ 1209  git branch -la
+ 1210  git checkout GCL3
+ 1211  git branch --help
+ 1212* git branch -b asz404367git@github.com:InzynieriaOprogramowaniaAGH/MDO2023.git
+ 1213  git checkout -b asz404367
+ 1214  cd GCL3/
+ 1215  mkdir asz404367
+ 1216  touch asz404367/sprawko.md
+ 1217  wsl --version
+ 1218  whoami
+ 1219  cat /etc/os-release 
+ 1220  git --version
+ 1221  ssh -v
+ 1222  ssh ---version
+ 1223  ssh-keygen --version
+ 1224  git remote -vv
+ 1225  git remote -v
+ 1226  ssh-keygen --help
+ 1227* ssh-keygen
+ 1228  ssh-keygen -t dsa
+ 1229  tree
+ 1230  cat /home/asz/.ssh/id_dsa.pub 
+ 1231  cat /home/asz/.ssh/id_dsa.pub
+ 1232  ssh-keygen -t ed25519
+ 1233  cat /home/asz/.ssh/id_ed25519
+ 1234  cat /home/asz/.ssh/id_ed25519.pub 
+ 1235  git con core.sshCommand "ssh -i ~/.ssh/id_rsa_example -F /dev/null"
+ 1236  cat ~/.ssh/id_ed25519
+ 1237  git config core.sshCommand "ssh -i ~/.ssh/id_ed25519 -F /dev/null"
+ 1238  vi ../.git/config 
+ 1239  git remote -v
+ 1240  git branch -la
+ 1241  git checkout --help
+ 1242  git commit -am "lab1 steps 1-6"
+ 1243  git add .
+ 1244  git commit -am "lab1 steps 1-6"
+ 1245  git push origin asz404367
+ 1246  git pull
+ 1247  git push origin asz404367
+ 1248  git checkout GCL3
+ 1249  git pull
+ 1250  git merge asz404367
+ 1251  git checkout asz404367
+ 1252  git commit -am "lab1 merge part"
+ 1253  git push origin asz404367
+ 1254  git tag --help
+ 1255  git log
+ 1256  git tag lab1 d109624736dd58ab9b6521d644b71247753be790
+ 1257  git push origin lab1
+ 1258  cd ../.git/hooks/
+ 1259  ls
+ 1260  vi pre-commit.sample 
+ 1261  touch pre-commit
+ 1262  chmod +x pre-commit
+ 1263  code pre-commit
+ 1264  touch pre-commit-msg
+ 1265  code pre-commit-msg
+ 1266  chmod +x pre-commit-msg 
+ 1267  ls
+ 1268  code pre-commit
+ 1269  code pre-commit-msg 
+ 1270  git status
+ 1271  cd ..
+ 1272  ls
+ 1273  cd ..
+ 1274  ls
+ 1275  git commit -am 'test hook1'
+ 1276  git reset hard origin/asz404367 
+ 1277  git reset --hard origin/asz404367 
+ 1278  git commit -am 'test hook1'
+ 1279  git reset --hard origin/asz404367 
+ 1280  git status
+ 1281  git add .
+ 1282  git commit -am 'test hook1'
+ 1283  git reset --soft HEAD~1
+ 1284  chmod 700 .git/hooks/pre-commit
+ 1285  chmod 700 .git/hooks/pre-commit-msg 
+ 1286  git commit -am 'test hook1'
+ 1287  sudo chmod 700 .git/hooks/pre-commit
+ 1288  git reset --soft HEAD~1
+ 1289  sudo chmod 700 .git/hooks/pre-commit
+ 1290  git commit -am 'test hook1'
+ 1291  git reset --soft HEAD~1
+ 1292  git commit -am 'test hook1'
+ 1293  git reset --soft HEAD~1
+ 1294  git add .
+ 1295  git commit -am 'test hook1'
+ 1296  git reset --soft HEAD~1
+ 1297  git commit -am 'test hook1'
+ 1298  git reset --soft HEAD~1
+ 1299  git commit -am 'test hook1'
+ 1300  git reset --soft HEAD~1
+ 1301  git commit -am 'test hook1'
+ 1302  git reset --soft HEAD~1
+ 1303  git commit -am 'test hook1'
+ 1304  git reset --soft HEAD~1
+ 1305  git commit -am 'test hook1'
+ 1306  git commit -am 'test DEVOPS hook1'
+ 1307  git commit -am 'DEVOPS test  hook1'
+ 1308  git commit -m 'DEVOPS test  hook1'
+ 1309  git reset --soft HEAD~1
+ 1310  git commit -am 'test hook1'
+ 1311  git commit -am 'test DEVOPS hook1'
+ 1312  git commit -m 'DEVOPS test  hook1'
+ 1313  git reset --soft HEAD~1
+ 1314  git commit -m 'DEVOPS test  hook1'
+ 1315  git commit -m 'test  hook1'
+ 1316  git reset --soft HEAD~1
+ 1317  git commit -m 'test  hook1'
+ 1318  git commit -m 'test DEVOPS hook1'
+ 1319  git commit -m 'DEVOPS test hook1'
+ 1320  git reset --soft HEAD~1
+ 1321  git commit -m 'test hook1'
+ 1322  git reset --soft HEAD~1
+ 1323  git commit -m 'test hook1'
+ 1324  git reset --soft HEAD~1
+ 1325  git commit -m 'test hook1'
+ 1326  git commit -m 'test DEVOPS hook1'
+ 1327  git commit -m 'DEVOPS test hook1'
+ 1328  git commit -m 'test DEVOPS hook1'
+ 1329  git reset --soft HEAD~1
+ 1330  git commit -m 'test hook1'
+ 1331  git commit -m 'test DEVOPS hook1'
+ 1332  git reset --soft HEAD~1
+ 1333  git commit -m 'test hook1'
+ 1334  git log
+ 1335  git reset --soft HEAD~1
+ 1336  git commit -m 'test hook1'
+ 1337  git log
+ 1338  git reset --soft HEAD~1
+ 1339  git commit -m 'test hook1'
+ 1340  git log
+ 1341  git status
+ 1342  q
+ 1343  git reset --soft HEAD~1
+ 1344  git commit -m 'test hook1'
+ 1345  git log
+ 1346  git reset --soft HEAD~1
+ 1347  git commit -m 'test hook2'
+ 1348  git log
+ 1349  cd GCL3/asz404367/
+ 1350  LS
+ 1351  ls
+ 1352  history > history_lab1.txt
+ 1389  sudo apt update
+ 1390  sudo apt install apt-transport-https ca-certificates curl software-properties-common
+ 1391  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+ 1392  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+ 1393  apt-cache policy docker-ce
+ 1394  sudo apt install docker-ce
+ 1395  sudo systemctl status docker
+ 1396  reboot
+ 1397  sudo systemctl status docker
+ 1398  studia
+ 1399  alias ls
+ 1400  alias 
+ 1401  home
+ 1402  ls
+ 1403  cd studia/
+ 1404  ls
+ 1405  cd devops/
+ 1406  pwd
+ 1407  ls
+ 1408  mkdir laby
+ 1409  cd laby/
+ 1410  git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2023.git
+ 1411  cd MDO2023/
+ 1412  code .
+ 1413  sudo systemctl start docker
+ 1414  docker ps
+ 1415  docker --version
+ 1416  sudo docker run fedora:latest
+ 1417  docker ps -a
+ 1418  sudo docker run fedora:latest
+ 1419  docker ps -a
+ 1420  sudo docker run fedora:latest
+ 1421  sudo docker ps -a
+ 1422  docker login -u szafa1999
+ 1423  sudo docker login -u szafa1999
+ 1424  history
+ 1425  history > GCL3/asz404367/history_lab1.txt 
