@@ -1,4 +1,4 @@
-version: "1.0.0"
+version: "3.7"
 services:
   todo_list_test:
     image: todo-list-test:1.0.0
