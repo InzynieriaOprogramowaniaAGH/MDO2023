@@ -10,4 +10,6 @@ services:
     build:
       context: ./
       dockerfile: dockerfile-build
+    tags:
+	-todo-list:1.0.0
     image: todo-list:1.0.0
