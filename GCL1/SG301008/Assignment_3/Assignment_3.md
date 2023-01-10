@@ -98,11 +98,11 @@ Wynik builda w konsoli:
 ### Pipeline
 Diagram aktywnoœci:  
 ![](./screenshots/015.jpg)  
-Checkout - klonuje swoje repozytorium `https://github.com/szymongamza/DevOpsJenkinsTry`  
-Build - uruchamia kontener który buduje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa `mcr.microsoft.com/dotnet/sdk:7.0`  
-Test - uruchamia kontener który testuje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa obraz buduj¹cy z poprzedniego stage'a  
-Publish - buduje moj¹ aplikacjê pod kilka platform w wersji `--self-contained` jako artefakty, w celu ³atwego uruchomienia starych wersji aplikacji bez martwienia siê o dependencje. W celu ³atwego wdra¿ania, budujê dodatkowy obraz posiadaj¹cy aplikacjê w formie `framework-dependent binary` oparty na obrazie runtime `mcr.microsoft.com/dotnet/aspnet:7.0`, pozwala to na dowoln¹ cross-platformowoœæ i ³atwy deploy.  
-Deploy - przes³anie obrazu do docker hub'a.  
+* Checkout - klonuje swoje repozytorium `https://github.com/szymongamza/DevOpsJenkinsTry`  
+* Build - uruchamia kontener który buduje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa `mcr.microsoft.com/dotnet/sdk:7.0`  
+* Test - uruchamia kontener który testuje moj¹ aplikacjê. Jako obrazu bazowego u¿ywa obraz buduj¹cy z poprzedniego stage'a  
+* Publish - buduje moj¹ aplikacjê pod kilka platform w wersji `--self-contained` jako artefakty, w celu ³atwego uruchomienia starych wersji aplikacji bez martwienia siê o dependencje. W celu ³atwego wdra¿ania, budujê dodatkowy obraz posiadaj¹cy aplikacjê w formie `framework-dependent binary` oparty na obrazie runtime `mcr.microsoft.com/dotnet/aspnet:7.0`, pozwala to na dowoln¹ cross-platformowoœæ i ³atwy deploy.  
+* Deploy - przes³anie obrazu do docker hub'a.  
 Diagram wdro¿eniowy:  
 ![](./screenshots/016.jpg)  
 Wdro¿eniem u mnie jest, przes³anie obrazu do Docker Hub'a z œrodowiska Jenkins.  
