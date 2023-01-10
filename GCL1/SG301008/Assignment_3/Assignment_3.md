@@ -148,12 +148,12 @@ pipeline {
                 archiveArtifacts artifacts: 'artifacts/linux-x64.tar', fingerprint: true
                 archiveArtifacts artifacts: 'artifacts/osx-x64.tar', fingerprint: true
                 sh 'docker build -f Dockerfile.dep -t szymongamza/todolist:latest .'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'rm -r ./artifacts'
             }
         }
         stage('Deploy') {
             steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push szymongamza/todolist:latest'
             }
         }
@@ -205,3 +205,6 @@ tar file: './artifacts/osx-x64.tar', archive: false, dir: './artifacts/osx-x64'
 ![](./screenshots/020.png)  
 Efekt stage'u Deploy:  
 ![](./screenshots/022.png)  
+W pipeline w celu Deploy'u muszê zalogowaæ siê do DockerHub -> Doda³em poœwiadczenia do Jenkins:  
+![](./screenshots/023.png)  
+![](./screenshots/024.png)  
