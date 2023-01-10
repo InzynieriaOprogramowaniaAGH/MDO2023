@@ -3,8 +3,8 @@
 
 ### Przygotowanie
 * Zapoznaj siê z instrukcj¹ instalacji Jenkinsa: https://www.jenkins.io/doc/book/installing/docker/
-  * Uruchom obraz Dockera który eksponuje œrodowisko zagnie¿d¿one
-Wyczyœci³em `DOCKER_TLS_CERTDIR=""` w celu u¿ycia HTTP a nie HTTPS (z nim by³y problemy).
+  * Uruchom obraz Dockera który eksponuje œrodowisko zagnie¿d¿one  
+Wyczyœci³em `DOCKER_TLS_CERTDIR=""` w celu u¿ycia HTTP a nie HTTPS (z nim by³y problemy).  
 ```
 sudo docker run \
   --name jenkins-docker \
@@ -21,8 +21,8 @@ sudo docker run \
   --storage-driver overlay2
 ```
 ![](./screenshots/001.png)  
-  * Przygotuj obraz blueocean na podstawie obrazu Jenkinsa (czym siê ró¿ni¹?)
-Dockerfile do build'u:
+  * Przygotuj obraz blueocean na podstawie obrazu Jenkinsa  
+Dockerfile do build'u:  
 ```dockerfile
 FROM jenkins/jenkins:2.375.1
 USER root
@@ -37,8 +37,8 @@ RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.26.0 docker-workflow:563.vd5d2e5c4007f"
 ```
-  * Uruchom Blueocean
-Czyszczê `DOCKER_HOST=""`, `DOCKER_TLS_VERIFY=""` i `DOCKER_CERT_PATH=""` w celu u¿ycia HTTP
+  * Uruchom Blueocean  
+Czyszczê `DOCKER_HOST=""`, `DOCKER_TLS_VERIFY=""` i `DOCKER_CERT_PATH=""` w celu u¿ycia HTTP  
 
 ```
 docker run \
@@ -55,14 +55,14 @@ docker run \
   --volume jenkins-docker-certs:/certs/client:ro \
   myjenkins-blueocean:2.375.1-1 
 ```
-  * Zaloguj siê i skonfiguruj Jenkins
+  * Zaloguj siê i skonfiguruj Jenkins  
 ![](./screenshots/002.png)  
 Skonfigurowa³em po³¹czenie z kontenerem dind:  
 ![](./screenshots/021.png)  
   
 ### Uruchomienie 
-* Konfiguracja wstêpna i pierwsze uruchomienie
-  * Utwórz projekt, który wyœwietla uname
+* Konfiguracja wstêpna i pierwsze uruchomienie  
+  * Utwórz projekt, który wyœwietla uname  
 Przechodzimy do `New Item`.  
 ![](./screenshots/003.png)  
 Wpisujemy nazwê projektu i wybieramy typ `Freestyle project`:  
@@ -75,21 +75,21 @@ W celu uruchomienia klikamy `Build Now`:
 ![](./screenshots/007.png)  
 Efektem jest uruchomienie build'u, które s¹ numerowane. PrzejdŸmy do wykonanego build'u:  
 ![](./screenshots/008.png)
-Nastêpnie aby zobaczyæ wynik komendy przechodzimy do `Console Output`:
+Nastêpnie aby zobaczyæ wynik komendy przechodzimy do `Console Output`:  
 ![](./screenshots/009.png)  
-  * Utwórz projekt, który zwraca b³¹d, gdy... godzina jest nieparzysta
+  * Utwórz projekt, który zwraca b³¹d, gdy... godzina jest nieparzysta  
 W tym celu tworzymy projekt jak poprzednim razem, zmieniamy jedynie wykonywany skrypt:  
 ![](./screenshots/010.png)  
-Dodatkowo doda³em Schedule `H/30 * * * *` w celu uruchamiania build'u co 30 min:
+Dodatkowo doda³em Schedule `H/30 * * * *` w celu uruchamiania build'u co 30 min:  
 ![](./screenshots/011.png)  
 Wynik build'ów:  
 ![](./screenshots/011a.png)  
-* Utwórz "prawdziwy" projekt, który:
-  * klonuje nasze repozytorium
-  * przechodzi na osobist¹ ga³¹Ÿ
+* Utwórz "prawdziwy" projekt, który:  
+  * klonuje nasze repozytorium  
+  * przechodzi na osobist¹ ga³¹Ÿ  
 Powy¿sze podpunkty realizujemy poprzez opcjê w konfiguracji projektu `Source Code Management` gdzie wstawiamy URL repozytorium oraz jego ga³¹Ÿ:  
 ![](./screenshots/012.png)  
-  * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+  * buduje obrazy z dockerfiles i/lub komponuje via docker-compose  
 Skrypt odpowiadaj¹cy za budowanie i testy:  
 ![](./screenshots/013.png)  
 Wynik builda w konsoli:  
