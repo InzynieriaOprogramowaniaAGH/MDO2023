@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   todo_list_test:
-    image: todo-list-test:1.0.0
+    image: todo-list:1.0.0
     depends_on:
       - todo_list_build
     command: dotnet test
@@ -10,6 +10,4 @@ services:
     build:
       context: ./
       dockerfile: dockerfile-build
-    tags:
-	-todo-list:1.0.0
     image: todo-list:1.0.0
