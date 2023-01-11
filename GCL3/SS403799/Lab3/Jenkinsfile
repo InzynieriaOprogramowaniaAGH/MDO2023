@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {     
+        DOCKERHUB_CREDENTIALS=credentials('DOCKERHUB')     
+    }   
+
     stages {
         stage('Collect') {
             steps {
@@ -24,11 +28,15 @@ pipeline {
         stage('Publish') {
             steps {
                 echo '--- PUBLISH ---'
-                sh '''DC=$(docker create makesitebuild)
-                docker cp ${DC}:makesite/_site artifacts
-                docker rm ${DC}
-                '''
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin' 
+                sh 'docker build -f GCL3/SS403799/Lab2/Dockerfile.publish -t szymonsawis/lab3:$BUILD_NUMBER .'
+                sh 'docker push szymonsawis/lab3:$BUILD_NUMBER'
             }
         }
+    }
+    post {
+    always {
+      sh 'docker logout'
+    }
     }
 }
