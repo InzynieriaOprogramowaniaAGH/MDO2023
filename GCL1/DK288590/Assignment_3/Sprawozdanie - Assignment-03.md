@@ -141,6 +141,7 @@ services:
 Diagram koncepcyjny pipeline:
 
 ![](./ss/013.png)
+
 Opis kroków na diagramie:
 * Checkout - klonuje repozytorium z kodem: `https://github.com/Dahard/todo-list-backend.git`
 * Build - uruchamia kontener budujący aplikację.
