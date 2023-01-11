@@ -1,0 +1,66 @@
+Dysponując pomyślnie zainstalowanym dockerem oraz kontem na [Docker hub](https://hub.docker.com/) można przejść do pobierania i testowania obrazów z tego repozytorium.
+
+Pierwszy, hello-world, za pomocą komendy: "docker run hello-world" przebiegł pomyślnie o czym świadczą logi z danych wyjściowych:
+
+![](hw_docker.png)
+
+Drugi, busybox, po utworzeniu następującego, krótkiego dockerfile: 
+
+![](bb_dockerfile.png)
+
+i wykonaniu komendy "docker run -it --rm busybox" również wykonał się poprawnie przenosząc do interaktywnego terminala:
+
+![](bb_command.png)
+
+Działający proces kontenera busybox jest wykrywany za pomocą następującego polecenia:
+ 
+![](bb_docker_ps.png)
+
+Podobnie, obraz dystrybucji Ubuntu bazujący na wersji 23.04, został pobrany a następnie uruchomiony. Oto treść dockerfile'a:
+
+![](ubuntu_df.png)
+
+Budowa i uruchomienie kontenera:
+
+![](root_ubuntu.png)
+
+(tu przykładowa komenda *ls* wewnątrz kontenera).
+
+Komenda *top* pokazuje listę procesów działających w dockerze:
+
+![](ps_in_ubuntu.png)
+
+
+
+Po ściągnięciu obrazu MySql, utworzeniu Dockerfile analogicznego do wersji z hub.docker.com i uruchomieniu komendy docker run pojawił się kolejny, działający kontener:
+
+![](mysql_docker.png)
+
+Tutaj bez parametrów -ti więc bez sesji interaktywnej, więc polecenia do MySQL można wysyłać poprzez *docker exec*.
+
+Po pracy z kontenerami zalegające obrazy w ciągu dalszym znajdują się na dysku. Można rzec, że "trochę" się tego nazbierało:
+
+![](docker_system_df.png)
+
+Poszczególne obrazy można usunąć poleceniem *docker rmi -f* podając jako parametry id obrazów. Tu jeden z przykładów:
+
+![](delete_images.png)
+
+Przykładowym projektem, przy pomocy którego zostanie zademonstrowane działanie dockera będzie aplikacja napisana w Javie z frameworkiem Spring. Aplikacja typu REST pobiera z serwera NASA szczegółowe informacje o dzisiejszym zdjęciu w formacie *.json. Po utworzeniu właściwego Dockerfile oraz pliku pom.xml (z zależnościami, wymaganego przy budowaniu aplikacji za pomocą maven'a) proces generowania obrazu ukończył się pomyślnie:
+
+![](build_spring.png)
+
+![](build_spring_complete.png)
+
+Po niewielkiej konfiguracji sieci (wykonanej na potrzeby projektu):
+
+![](create_nat.png)
+
+oraz uruchomieniu 
+
+![](run_image_spring.png)
+
+aplikacja działa. Przykładowe dane:
+
+![](image_otd.png)
+
