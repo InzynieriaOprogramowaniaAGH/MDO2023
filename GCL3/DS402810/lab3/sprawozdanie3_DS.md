@@ -16,8 +16,13 @@ Hasło zostało wpisane:
 Instalacja
 ![](./screeny/jen2.png)
 
-Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
 Przygotuj obraz blueocean na podstawie obrazu Jenkinsa (czym się różnią?)
+![](./screeny/bo1.png)
+![](./screeny/bo2.png)
+wybrany został debian przez błąd The repository 'https://download.docker.com/linux/ubuntu bullseye Release' does not have a Release file. dla ubuntu i fedory
+![](./screeny/bo3.png)
+![](./screeny/bo4.png)
+
 Uruchom Blueocean
 Zaloguj się i skonfiguruj Jenkins
 Zadbaj o archiwizację i zabezpieczenie logów
