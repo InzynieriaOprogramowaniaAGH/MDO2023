@@ -75,6 +75,7 @@ Tworzymy pierwszy projekt w Jenkins.
 ![](./ss/004.png)
 Następnie odpalamy projekt. Po zajrzeniu do logów efekt powinien wyglądać następująco:
 ![](./ss/005.png)
+
 Przechodzimy do stworzenia nowego projektu, którego odpalenie będzie walidowane w przypadku nieparzystej godziny (uruchomienia). Wsszystkie kroki są takie jak w przypadku poprzedniego projektu po za poleceniem w powłoce. Tym razem musimy wpisać skrypt: 
 ```
 HOUR=$(date +%H)
